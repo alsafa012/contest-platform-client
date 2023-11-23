@@ -70,6 +70,7 @@ const Navbar = () => {
      return (
           <div>
                <div className="bg-black fixed z-30 top-0 left-0 right-0" >
+               {/* <div className="bg-black fixed z-30 top-0 left-0 right-0" > */}
                     <Container>
                          <div className="navbar bg-black">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
