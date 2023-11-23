@@ -2,10 +2,16 @@ import { useState } from "react";
 import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
 import { useForm } from "react-hook-form";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/SocialLogins/SocialLogin";
+import useAuth from "../../Components/hook/useAuth";
+import Swal from "sweetalert2";
 const Login = () => {
      const [showPassword, setShowPassword] = useState(false);
+     const {user , userSignIn} = useAuth();
+     const location = useLocation();
+     const navigate = useNavigate();
+     const from = location?.state?.from?.pathname || "/";
      const {
           register,
           handleSubmit,
@@ -13,6 +19,20 @@ const Login = () => {
      } = useForm();
      const onSubmit = (data) => {
           console.log(data);
+          userSignIn(data.email, data.password)
+          .then((result) => {
+               navigate(from, { replace: true });
+               console.log(result.user);
+               Swal.fire(
+                    "Good job!",
+                    "User login successfully",
+                    "success"
+               );
+          })
+          .catch((error) => {
+               console.log(error);
+          })
+          
           
      };
      return (

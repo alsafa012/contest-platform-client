@@ -9,16 +9,28 @@ const Navbar = () => {
      const navigate = useNavigate();
 
      const handleUserSignOut = () => {
-          userSignOut()
-               .then(() => {
-                    Swal.fire(
-                         "Good job!",
-                         "User Sign out successfully",
-                         "success"
-                    );
-                    navigate("/");
-               })
-               .catch();
+          Swal.fire({
+               title: "Are you sure?",
+               text: "You want to sign out?",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes"
+             }).then((result) => {
+               if (result.isConfirmed) {
+                    userSignOut()
+                    .then(() => {
+                         Swal.fire(
+                              "Good job!",
+                              "User Sign out successfully",
+                              "success"
+                         );
+                         navigate("/");
+                    })
+                    .catch();
+               }
+             })
      };
 
      const navLists = (
