@@ -1,13 +1,15 @@
-import WebsiteTitle from '../../Components/WebsiteTitle/WebsiteTitle';
-
+import BannerSection from "../../Components/HomePageComponents/BannerSection/BannerSection";
+import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Container from "../../Shared/Container/Container";
 const HomePage = () => {
      return (
           <div>
                <WebsiteTitle title={"Home Page"}></WebsiteTitle>
-               <div>
-                    <p className='ok'>home </p>
-                    <p>home</p>
-               </div>
+
+               <Container>
+                    <BannerSection></BannerSection>
+               </Container>
           </div>
      );
 };
