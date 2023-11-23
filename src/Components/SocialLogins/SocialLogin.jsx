@@ -1,24 +1,37 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hook/useAxiosPublic";
+import moment from "moment";
 
 const SocialLogin = () => {
      const { user, googleSignIn } = useAuth();
      const location = useLocation();
      const navigate = useNavigate();
      const from = location?.state?.from?.pathname || "/";
+     const axiosPublic = useAxiosPublic();
      const handleGoogleSignIn = () => {
           if (user) {
                return Swal.fire({
                     icon: "error",
                     title: "Oops sign in failed...",
                     text: "user already logged in..!",
-                  });
-               
+               });
           }
           googleSignIn()
                .then((result) => {
-                     Swal.fire(
+                    const userInfo = {
+                         name: result.user?.displayName,
+                         email: result.user?.email,
+                         CreatedTime: moment().format(
+                              "MMMM Do YYYY, h:mm:ss a"
+                         ),
+                    };
+                    axiosPublic.post("/users", userInfo)
+                    .then((res) => {
+                         console.log(res.data);
+                    });
+                    Swal.fire(
                          "Good job!",
                          "You Signed In With Google Successfully",
                          "success"

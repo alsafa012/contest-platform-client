@@ -6,12 +6,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogins/SocialLogin";
+import useAxiosPublic from "../../Components/hook/useAxiosPublic";
+import moment from "moment/moment";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
      const { user, createUser, updateUserProfile } = useContext(AuthContext);
      const location = useLocation();
      const navigate = useNavigate();
      const from = location?.state?.from?.pathname || "/";
+     const axiosPublic = useAxiosPublic();
      const {
           register,
           handleSubmit,
@@ -31,7 +34,30 @@ const Registration = () => {
                     const loggedUser = result.user;
                     console.log(loggedUser);
                     updateUserProfile(data.name, data.photo)
-                         .then(() => {})
+                         .then(() => {
+                              const userInfo = {
+                                   name: data.name,
+                                   email: data.email,
+                                   CreatedTime: moment().format(
+                                        "MMMM Do YYYY, h:mm:ss a"
+                                   ),
+                              };
+                              axiosPublic
+                                   .post("/users", userInfo)
+                                   .then((res) => {
+                                        if (res.data.insertedId) {
+                                             console.log(
+                                                  "user added successfully in the database"
+                                             );
+                                             Swal.fire({
+                                                  title: "Good job!",
+                                                  text: "Sign up successfully!",
+                                                  icon: "success",
+                                             });
+                                             navigate(from, { replace: true });
+                                        }
+                                   });
+                         })
                          .catch((error) => {
                               console.log(error);
                          });
