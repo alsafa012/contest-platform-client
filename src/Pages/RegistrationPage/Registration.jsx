@@ -1,19 +1,54 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
 import { useForm } from "react-hook-form";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
      const [errorMessage, setErrorMessage] = useState("");
+     const { user, createUser, updateUserProfile } = useContext(AuthContext);
+     const location = useLocation();
+     const navigate = useNavigate();
+     const from = location?.state?.from?.pathname || "/";
      const {
           register,
           handleSubmit,
           formState: { errors },
      } = useForm();
      const onSubmit = (data) => {
+          if (user) {
+               return Swal.fire({
+                    title: "Error!",
+                    text: "User Already logged In",
+                    icon: "error",
+               });
+          }
           console.log(data);
           setErrorMessage("");
+          createUser(data.email, data.password)
+               .then((result) => {
+                    const loggedUser = result.user;
+                    console.log(loggedUser);
+                    updateUserProfile(data.name, data.photo)
+                         .then(() => {})
+                         .catch((error) => {
+                              console.log(error);
+                         });
+
+                    Swal.fire(
+                         "Good job!",
+                         "User created successfully",
+                         "success"
+                    );
+
+                    navigate(from, { replace: true });
+               })
+               .catch((error) => {
+                    setErrorMessage(error);
+                    // console.log(error);
+               });
      };
      return (
           <div>
@@ -27,6 +62,7 @@ const Registration = () => {
                          onSubmit={handleSubmit(onSubmit)}
                          className="w-4/5 md:w-1/2 mx-auto"
                     >
+                         {/* User Name */}
                          <div className="form-control">
                               <label className="label">
                                    <span className="label-text">Name</span>
@@ -45,6 +81,7 @@ const Registration = () => {
                                    </span>
                               )}
                          </div>
+                         {/* Photo url */}
                          <div className="form-control">
                               <label className="label">
                                    <span className="label-text">Photo</span>
@@ -63,6 +100,7 @@ const Registration = () => {
                                    </span>
                               )}
                          </div>
+                         {/* Email */}
                          <div className="form-control">
                               <label className="label">
                                    <span className="label-text">Email</span>
@@ -81,6 +119,7 @@ const Registration = () => {
                                    </span>
                               )}
                          </div>
+                         {/* Password */}
                          <div className="form-control relative">
                               <label className="label">
                                    <span className="label-text">Password</span>

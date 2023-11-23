@@ -1,7 +1,26 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Container from "../../../Shared/Container/Container";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+     const { user, userSignOut } = useContext(AuthContext);
+     const navigate = useNavigate();
+
+     const handleUserSignOut = () => {
+          userSignOut()
+               .then(() => {
+                    Swal.fire(
+                         "Good job!",
+                         "User Sign out successfully",
+                         "success"
+                    );
+                    navigate("/");
+               })
+               .catch();
+     };
+
      const navLists = (
           <>
                <li>
@@ -50,9 +69,9 @@ const Navbar = () => {
      );
      return (
           <div>
-               <div className="bg-black">
+               <div className="bg-black fixed z-30 top-0 left-0 right-0" >
                     <Container>
-                         <div className=" navbar bg-black">
+                         <div className="navbar bg-black">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                               <div className="navbar-start">
                                    <div className="dropdown">
@@ -104,30 +123,67 @@ const Navbar = () => {
                                              tabIndex={0}
                                              className="btn btn-ghost btn-circle avatar"
                                         >
-                                             logout
+                                             {user ? (
+                                                  <div className="w-10 rounded-full">
+                                                       <img
+                                                            src={user.photoURL}
+                                                       />
+                                                  </div>
+                                             ) : (
+                                                  <Link to="/login">
+                                                       <button className="text-white">
+                                                            Sign Up
+                                                       </button>
+                                                  </Link>
+                                             )}
                                         </label>
 
-                                        <div>
-                                             <ul
-                                                  tabIndex={0}
-                                                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-                                             >
-                                                  <div>
-                                                       <li>
-                                                            <h3>User:</h3>
-                                                       </li>
-
-                                                       <li>
-                                                            <Link
-                                                                 to="/dashboard"
-                                                                 className="font-medium"
-                                                            >
-                                                                 Dashboard
-                                                            </Link>
-                                                       </li>
-                                                  </div>
-                                             </ul>
-                                        </div>
+                                        {user && (
+                                             <div>
+                                                  <ul
+                                                       tabIndex={0}
+                                                       className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                                                  >
+                                                       <div>
+                                                            <li>
+                                                                 <h2 className="font-medium">
+                                                                      User:
+                                                                      {
+                                                                           user.displayName
+                                                                      }
+                                                                 </h2>
+                                                            </li>
+                                                            <li>
+                                                                 <Link to="/dashboard">
+                                                                      <h4>
+                                                                           Dashboard
+                                                                      </h4>
+                                                                 </Link>
+                                                            </li>
+                                                            <li>
+                                                                 {user ? (
+                                                                      <button
+                                                                           onClick={
+                                                                                handleUserSignOut
+                                                                           }
+                                                                           className="font-medium"
+                                                                      >
+                                                                           Sign
+                                                                           Out
+                                                                      </button>
+                                                                 ) : (
+                                                                      <Link to="/login">
+                                                                           <button className="">
+                                                                                Sign
+                                                                                Up
+                                                                           </button>
+                                                                      </Link>
+                                                                 )}
+                                                            </li>
+                                                       </div>
+                                                  </ul>
+                                             </div>
+                                        )}
                                    </div>
                               </div>
                          </div>
