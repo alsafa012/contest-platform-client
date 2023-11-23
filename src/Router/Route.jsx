@@ -4,6 +4,8 @@ import Root from '../Layout/Root';
 import Login from '../Pages/LoginPage/Login';
 import Registration from '../Pages/RegistrationPage/Registration';
 import ErrorPage from '../Shared/ErrorPage/ErrorPage';
+import PrivateRoute from './PrivateRoute';
+import Dashboard from '../Layout/Dashboard';
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -25,6 +27,25 @@ const myCreatedRouter = createBrowserRouter([
           },
        ]
      },
+     {
+          path:"/dashboard",
+          element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+          // children:[
+          //      {
+          //           path: "/dashboard/cart",
+          //           element:<Cart></Cart>
+          //      },
+          //      // admin routes
+          //      {
+          //           path: "/dashboard/users",
+          //           element:<AllUsers></AllUsers>
+          //      },
+          //      {
+          //           path: "/dashboard/addItems",
+          //           element:<AdminRoute><AddItems></AddItems></AdminRoute>
+          //      },
+          // ]
+     }
    ]);
 
 export default myCreatedRouter;

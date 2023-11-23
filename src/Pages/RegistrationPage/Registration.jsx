@@ -5,9 +5,9 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogins/SocialLogin";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
-     const [errorMessage, setErrorMessage] = useState("");
      const { user, createUser, updateUserProfile } = useContext(AuthContext);
      const location = useLocation();
      const navigate = useNavigate();
@@ -26,7 +26,6 @@ const Registration = () => {
                });
           }
           console.log(data);
-          setErrorMessage("");
           createUser(data.email, data.password)
                .then((result) => {
                     const loggedUser = result.user;
@@ -46,8 +45,7 @@ const Registration = () => {
                     navigate(from, { replace: true });
                })
                .catch((error) => {
-                    setErrorMessage(error);
-                    // console.log(error);
+                    console.log(error);
                });
      };
      return (
@@ -77,7 +75,7 @@ const Registration = () => {
                               />
                               {errors.name && (
                                    <span className="mt-2 text-red-500">
-                                        This field is required
+                                        Name must be required
                                    </span>
                               )}
                          </div>
@@ -115,7 +113,7 @@ const Registration = () => {
                               />
                               {errors.email && (
                                    <span className="mt-2 text-red-500">
-                                        This field is required
+                                        Email field is required
                                    </span>
                               )}
                          </div>
@@ -181,7 +179,7 @@ const Registration = () => {
                                         type="checkbox"
                                         name="terms"
                                         id=""
-                                        // required
+                                        required
                                    />
                                    <p>
                                         Please accept our
@@ -194,13 +192,6 @@ const Registration = () => {
                                    </p>
                               </div>
                          </div>
-                         <h3>
-                              {errorMessage && (
-                                   <p className="text-red-600 pt-1">
-                                        {errorMessage}
-                                   </p>
-                              )}
-                         </h3>
                          <div className="form-control mt-6">
                               <input
                                    className="btn bg-[#FF444A] text-white"
@@ -209,6 +200,8 @@ const Registration = () => {
                               />
                          </div>
                     </form>
+                    <div className="divider w-4/5 md:w-1/2 mx-auto">OR</div>
+                    <SocialLogin></SocialLogin>
                     <p className="text-center py-4">
                          Already Have An Account ?
                          <Link

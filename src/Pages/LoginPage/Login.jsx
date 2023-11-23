@@ -3,9 +3,9 @@ import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
 import { useForm } from "react-hook-form";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import SocialLogin from "../../Components/SocialLogins/SocialLogin";
 const Login = () => {
      const [showPassword, setShowPassword] = useState(false);
-     const [errorMessage, setErrorMessage] = useState("");
      const {
           register,
           handleSubmit,
@@ -13,7 +13,7 @@ const Login = () => {
      } = useForm();
      const onSubmit = (data) => {
           console.log(data);
-          setErrorMessage("");
+          
      };
      return (
           <div>
@@ -94,7 +94,6 @@ const Login = () => {
                                              password minLength is 6
                                         </p>
                                    )}
-                                   {/* {errors.password?.type === "required" && (<p className="mt-2 text-red-500" role="alert">password is required</p>)} */}
 
                                    <span
                                         className="text-xl absolute top-[60%] right-4"
@@ -109,14 +108,6 @@ const Login = () => {
                                         )}
                                    </span>
                               </div>
-
-                              <h3>
-                                   {errorMessage && (
-                                        <p className="text-red-600 pt-1">
-                                             {errorMessage}
-                                        </p>
-                                   )}
-                              </h3>
                               <div className="form-control mt-6">
                                    <input
                                         className="btn bg-[#FF444A] text-white"
@@ -125,6 +116,11 @@ const Login = () => {
                                    />
                               </div>
                          </form>
+                         <div className="divider w-4/5 md:w-1/2 mx-auto">
+                              OR
+                         </div>
+                         <SocialLogin></SocialLogin>
+
                          <p className="text-center py-4">
                               Already Have An Account ?
                               <Link
