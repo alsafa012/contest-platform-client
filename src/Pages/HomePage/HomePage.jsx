@@ -4,7 +4,10 @@ const HomePage = () => {
      return (
           <div>
                <WebsiteTitle title={"Home Page"}></WebsiteTitle>
-               HomePage
+               <div>
+                    <p className='ok'>home </p>
+                    <p>home</p>
+               </div>
           </div>
      );
 };

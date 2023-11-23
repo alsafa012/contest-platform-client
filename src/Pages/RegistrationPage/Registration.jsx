@@ -1,10 +1,9 @@
-import WebsiteTitle from '../../Components/WebsiteTitle/WebsiteTitle';
+import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
 
 const Registration = () => {
      return (
           <div>
-                              <WebsiteTitle title={"Registration"}></WebsiteTitle>
-
+               <WebsiteTitle title={"Registration"}></WebsiteTitle>
                Registration
           </div>
      );
