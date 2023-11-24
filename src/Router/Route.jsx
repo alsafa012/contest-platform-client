@@ -6,6 +6,11 @@ import Registration from '../Pages/RegistrationPage/Registration';
 import ErrorPage from '../Shared/ErrorPage/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from '../Layout/Dashboard';
+import AllContestPage from '../Pages/AllContestPage/AllContestPage';
+import ManageUser from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUser';
+import AdminRoute from './AdminRoute';
+import ManageContext from '../Pages/Dashboard/AdminDashboard/ManageContext/ManageContext';
+import UserProfile from '../Pages/Dashboard/UserDashboard/UserProfile/UserProfile';
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -16,6 +21,10 @@ const myCreatedRouter = createBrowserRouter([
           {
                path: "/",
                element:<HomePage></HomePage>
+          },
+          {
+               path: "/allContest",
+               element:<AllContestPage></AllContestPage>
           },
           {
                path: "/login",
@@ -29,22 +38,21 @@ const myCreatedRouter = createBrowserRouter([
      },
      {
           path:"/dashboard",
-          element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-          // children:[
-          //      {
-          //           path: "/dashboard/cart",
-          //           element:<Cart></Cart>
-          //      },
-          //      // admin routes
-          //      {
-          //           path: "/dashboard/users",
-          //           element:<AllUsers></AllUsers>
-          //      },
-          //      {
-          //           path: "/dashboard/addItems",
-          //           element:<AdminRoute><AddItems></AddItems></AdminRoute>
-          //      },
-          // ]
+          element:<Dashboard></Dashboard>,
+          children:[
+               {
+                    path: "/dashboard/users",
+                    element:<ManageUser></ManageUser>
+               },
+               {
+                    path: "/dashboard/allContext",
+                    element:<ManageContext></ManageContext>
+               },
+               {
+                    path: "/dashboard/userProfile",
+                    element:<UserProfile></UserProfile>
+               },
+          ]
      }
    ]);
 

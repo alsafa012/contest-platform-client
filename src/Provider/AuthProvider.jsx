@@ -11,27 +11,29 @@ import {
      updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import useAxiosPublic from "../Components/hook/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-     const [loader, setLoader] = useState(true);
+     const [loading, setLoading] = useState(true);
      const [user, setUser] = useState(null);
+     const axiosPublic = useAxiosPublic();
      // sign in with google account
      const googleSignIn = (value) => {
-          setLoader(true);
+          setLoading(true);
           return signInWithPopup(auth, provider);
      };
      // create a new user
      const createUser = (email, password) => {
-          setLoader(true);
+          setLoading(true);
           return createUserWithEmailAndPassword(auth, email, password);
      };
      // sign in with email and password
      const userSignIn = (email, password) => {
-          setLoader(true);
+          setLoading(true);
           return signInWithEmailAndPassword(auth, email, password);
      };
      // User Profile updates
@@ -43,7 +45,7 @@ const AuthProvider = ({ children }) => {
      };
      // sign out user
      const userSignOut = () => {
-          setLoader(true);
+          setLoading(true);
           return signOut(auth);
      };
 
@@ -51,17 +53,42 @@ const AuthProvider = ({ children }) => {
      useEffect(() => {
           const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
                setUser(currentUser);
-               console.log(currentUser);
-               setLoader(false);
+               console.log("current user", currentUser);
+               if(currentUser){
+                    const userInfo = {email : currentUser?.email}
+                    axiosPublic.post('/jwt',userInfo)
+                    .then(res=>{
+                         if(res.data.token){
+                              localStorage.setItem('access-token',res.data.token)
+                              setLoading(false);
+                         }
+                        
+                    })
+               }
+               else{
+                    localStorage.removeItem('access-token');
+                    setLoading(false);
+               }
+               // setLoading(false);
           });
           return () => {
-               unSubscribe();
+               return unSubscribe();
           };
-     }, [user?.email]);
+     }, [axiosPublic]);
+     // useEffect(() => {
+     //      const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+     //           setUser(currentUser);
+     //           console.log(currentUser);
+     //           setLoading(false);
+     //      });
+     //      return () => {
+     //           unSubscribe();
+     //      };
+     // }, [user?.email]);
 
      const authInfo = {
           user,
-          loader,
+          loading,
           googleSignIn,
           createUser,
           userSignIn,

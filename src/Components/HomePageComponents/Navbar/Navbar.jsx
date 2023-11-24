@@ -3,9 +3,13 @@ import Container from "../../../Shared/Container/Container";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../hook/useAdmin";
+import useCreator from "../../hook/useCreator";
 
 const Navbar = () => {
      const { user, userSignOut } = useContext(AuthContext);
+     const [isAdmin] = useAdmin();
+     const [isCreator]=useCreator();
      const navigate = useNavigate();
 
      const handleUserSignOut = () => {
@@ -38,27 +42,41 @@ const Navbar = () => {
                <li>
                     <NavLink
                          to="/"
-                         className={({ isActive, isPending }) =>
-                              isPending
-                                   ? "pending"
-                                   : isActive
-                                   ? "text-[#ff6900] underline"
-                                   : ""
-                         }
+                         // className={({ isActive, isPending }) =>
+                         //      isPending
+                         //           ? "pending"
+                         //           : isActive
+                         //           ? "text-white"
+                         //           : ""
+                         // }
                     >
                          Home
                     </NavLink>
                </li>
                <li>
                     <NavLink
+                         to="/allContest"
+                         // className={({ isActive, isPending }) =>
+                         //      isPending
+                         //           ? "pending"
+                         //           : isActive
+                         //           ? "text-[#ff6900] underline"
+                         //           : ""
+                         // }
+                    >
+                         Our Contests
+                    </NavLink>
+               </li>
+               <li>
+                    <NavLink
                          to="/login"
-                         className={({ isActive, isPending }) =>
-                              isPending
-                                   ? "pending"
-                                   : isActive
-                                   ? "text-[#ff6900] underline"
-                                   : ""
-                         }
+                         // className={({ isActive, isPending }) =>
+                         //      isPending
+                         //           ? "pending"
+                         //           : isActive
+                         //           ? "text-[#ff6900] underline"
+                         //           : ""
+                         // }
                     >
                          Login
                     </NavLink>
@@ -66,13 +84,13 @@ const Navbar = () => {
                <li>
                     <NavLink
                          to="/registration"
-                         className={({ isActive, isPending }) =>
-                              isPending
-                                   ? "pending"
-                                   : isActive
-                                   ? "text-[#ff6900] underline"
-                                   : ""
-                         }
+                         // className={({ isActive, isPending }) =>
+                         //      isPending
+                         //           ? "pending"
+                         //           : isActive
+                         //           ? "text-[#ff6900] underline"
+                         //           : ""
+                         // }
                     >
                          Registration
                     </NavLink>
@@ -81,7 +99,7 @@ const Navbar = () => {
      );
      return (
           <div>
-               <div className="bg-black fixed z-30 top-0 left-0 right-0" >
+               <div className="bg-black" >
                {/* <div className="bg-black fixed z-30 top-0 left-0 right-0" > */}
                     <Container>
                          <div className="navbar bg-black">
@@ -173,6 +191,27 @@ const Navbar = () => {
                                                                       </h4>
                                                                  </Link>
                                                             </li>
+                                                          {/* { isAdmin &&   <li>
+                                                                 <Link to="/dashboard/users">
+                                                                      <h4>
+                                                                           Dashboard
+                                                                      </h4>
+                                                                 </Link>
+                                                            </li>}
+                                                          { isCreator &&   <li>
+                                                                 <Link to="/dashboard/allContext">
+                                                                      <h4>
+                                                                           Dashboard
+                                                                      </h4>
+                                                                 </Link>
+                                                            </li>}
+                                                          {!isAdmin && !isCreator &&   <li>
+                                                                 <Link to="/dashboard/userProfile">
+                                                                      <h4>
+                                                                           Dashboard
+                                                                      </h4>
+                                                                 </Link>
+                                                            </li>} */}
                                                             <li>
                                                                  {user ? (
                                                                       <button

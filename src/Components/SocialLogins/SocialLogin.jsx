@@ -26,6 +26,7 @@ const SocialLogin = () => {
                          CreatedTime: moment().format(
                               "MMMM Do YYYY, h:mm:ss a"
                          ),
+                         role:'user'
                     };
                     axiosPublic.post("/users", userInfo)
                     .then((res) => {
