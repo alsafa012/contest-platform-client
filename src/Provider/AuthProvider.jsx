@@ -75,16 +75,6 @@ const AuthProvider = ({ children }) => {
                return unSubscribe();
           };
      }, [axiosPublic]);
-     // useEffect(() => {
-     //      const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-     //           setUser(currentUser);
-     //           console.log(currentUser);
-     //           setLoading(false);
-     //      });
-     //      return () => {
-     //           unSubscribe();
-     //      };
-     // }, [user?.email]);
 
      const authInfo = {
           user,

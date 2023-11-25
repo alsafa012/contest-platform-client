@@ -11,6 +11,7 @@ import ManageUser from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUser'
 import AdminRoute from './AdminRoute';
 import ManageContext from '../Pages/Dashboard/AdminDashboard/ManageContext/ManageContext';
 import UserProfile from '../Pages/Dashboard/UserDashboard/UserProfile/UserProfile';
+import AddContextPage from '../Pages/Dashboard/CreatorDashboard/AddContextPage/AddContextPage';
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -40,13 +41,24 @@ const myCreatedRouter = createBrowserRouter([
           path:"/dashboard",
           element:<Dashboard></Dashboard>,
           children:[
+               // admin routes
                {
                     path: "/dashboard/users",
                     element:<ManageUser></ManageUser>
                },
                {
-                    path: "/dashboard/allContext",
+                    path: "/dashboard/manageContext",
                     element:<ManageContext></ManageContext>
+               },
+               // creator Routes
+               {
+                    path: "/dashboard/createContext",
+                    element:<AddContextPage></AddContextPage>
+               },
+               // user routes
+               {
+                    path: "/dashboard/userProfile",
+                    element:<UserProfile></UserProfile>
                },
                {
                     path: "/dashboard/userProfile",

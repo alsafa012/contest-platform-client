@@ -1,15 +1,20 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Container from "../../../Shared/Container/Container";
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import useAuth from "../../hook/useAuth";
 import Swal from "sweetalert2";
 import useAdmin from "../../hook/useAdmin";
 import useCreator from "../../hook/useCreator";
 
 const Navbar = () => {
-     const { user, userSignOut } = useContext(AuthContext);
+     const { user, userSignOut } = useAuth();
+     // const [isAdmin] = useAdmin();
+     // const [isCreator]=useCreator();
      const [isAdmin] = useAdmin();
-     const [isCreator]=useCreator();
+     const [isCreator] = useCreator();
+     // console.log(isAdmin);
+     // console.log(isCreator);
+     // const isAdmin = true;
+     // const isCreator=true;
      const navigate = useNavigate();
 
      const handleUserSignOut = () => {
@@ -20,21 +25,21 @@ const Navbar = () => {
                showCancelButton: true,
                confirmButtonColor: "#3085d6",
                cancelButtonColor: "#d33",
-               confirmButtonText: "Yes"
-             }).then((result) => {
+               confirmButtonText: "Yes",
+          }).then((result) => {
                if (result.isConfirmed) {
                     userSignOut()
-                    .then(() => {
-                         Swal.fire(
-                              "Good job!",
-                              "User Sign out successfully",
-                              "success"
-                         );
-                         navigate("/");
-                    })
-                    .catch();
+                         .then(() => {
+                              Swal.fire(
+                                   "Good job!",
+                                   "User Sign out successfully",
+                                   "success"
+                              );
+                              navigate("/");
+                         })
+                         .catch();
                }
-             })
+          });
      };
 
      const navLists = (
@@ -99,8 +104,8 @@ const Navbar = () => {
      );
      return (
           <div>
-               <div className="bg-black" >
-               {/* <div className="bg-black fixed z-30 top-0 left-0 right-0" > */}
+               <div className="bg-black">
+                    {/* <div className="bg-black fixed z-30 top-0 left-0 right-0" > */}
                     <Container>
                          <div className="navbar bg-black">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
@@ -184,34 +189,55 @@ const Navbar = () => {
                                                                       }
                                                                  </h2>
                                                             </li>
-                                                            <li>
+                                                            {/* <li>
                                                                  <Link to="/dashboard">
                                                                       <h4>
                                                                            Dashboard
                                                                       </h4>
                                                                  </Link>
-                                                            </li>
-                                                          {/* { isAdmin &&   <li>
-                                                                 <Link to="/dashboard/users">
-                                                                      <h4>
-                                                                           Dashboard
-                                                                      </h4>
-                                                                 </Link>
-                                                            </li>}
-                                                          { isCreator &&   <li>
-                                                                 <Link to="/dashboard/allContext">
-                                                                      <h4>
-                                                                           Dashboard
-                                                                      </h4>
-                                                                 </Link>
-                                                            </li>}
-                                                          {!isAdmin && !isCreator &&   <li>
-                                                                 <Link to="/dashboard/userProfile">
-                                                                      <h4>
-                                                                           Dashboard
-                                                                      </h4>
-                                                                 </Link>
-                                                            </li>} */}
+                                                            </li> */}
+                                                            
+                                                         <div>
+                                                         {user && isAdmin && (
+                                                                 <>
+                                                                      <li>
+                                                                           <Link to="/dashboard/users">
+                                                                                <h4>
+                                                                                     Dashboard
+                                                                                </h4>
+                                                                           </Link>
+                                                                      </li>
+                                                                 </>
+                                                            )}
+                                                         </div>
+                                                         <div>
+                                                         {user && isCreator && (
+                                                                 <>
+                                                                      <li>
+                                                                           <Link to="/dashboard/createContext">
+                                                                                <h4>
+                                                                                     Dashboard
+                                                                                </h4>
+                                                                           </Link>
+                                                                      </li>
+                                                                 </>
+                                                            )}
+                                                         </div>
+                                                        <div>
+
+                                                            {user && !isAdmin &&
+                                                                 !isCreator && (
+                                                                      <>
+                                                                           <li>
+                                                                                <Link to="/dashboard/userProfile">
+                                                                                     <h4>
+                                                                                          Dashboard
+                                                                                     </h4>
+                                                                                </Link>
+                                                                           </li>
+                                                                      </>
+                                                                 )}
+                                                        </div>
                                                             <li>
                                                                  {user ? (
                                                                       <button

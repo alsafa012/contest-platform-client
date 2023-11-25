@@ -6,9 +6,10 @@ import useCreator from "../Components/hook/useCreator";
 const Dashboard = () => {
      const [isAdmin] = useAdmin();
      const [isCreator] = useCreator();
+     // const isCreator = true;
      return (
           <div className="min-h-screen flex container mx-auto">
-               <div className="w-[25%] md:w-[20%] bg-emerald-200">
+               <div className="w-[25%] md:w-[20%] bg-emerald-500">
                     <ul className="menu p-4 space-y-2">
                          {isAdmin && (
                               <>
@@ -27,18 +28,18 @@ const Dashboard = () => {
                          {isCreator && (
                               <>
                                    <li>
-                                        <NavLink to="/dashboard/allContext">
-                                        Creator Contest
+                                        <NavLink to="/dashboard/createContext">
+                                        Create A Contest
+                                        </NavLink>
+                                   </li>
+                                   <li>
+                                        <NavLink to="/">
+                                        My Created Contest
                                         </NavLink>
                                    </li>
                                    <li>
                                         <NavLink to="/dashboard/userProfile">
-                                         Contest Page
-                                        </NavLink>
-                                   </li>
-                                   <li>
-                                        <NavLink to="/dashboard/userProfile">
-                                         Profile
+                                        Creator Profile
                                         </NavLink>
                                    </li>
                               </>

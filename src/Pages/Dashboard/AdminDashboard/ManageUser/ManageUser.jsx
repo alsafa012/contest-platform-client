@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAdmin from "../../../../Components/hook/useAdmin";
-import useAuth from "../../../../Components/hook/useAuth";
+// import useAdmin from "../../../../Components/hook/useAdmin";
+// import useAuth from "../../../../Components/hook/useAuth";
 import { useState } from "react";
 
 const ManageUser = () => {
      // const [category, setCategory] = useState("");
-     const [isAdmin] = useAdmin();
-     console.log(isAdmin);
-     const { user } = useAuth();
-     const currentUser = user?.email;
-     console.log(currentUser);
+     // const [isAdmin] = useAdmin();
+     // console.log(isAdmin);
+     // const { user } = useAuth();
+     // const currentUser = user?.email;
+     // console.log(currentUser);
      const axiosSecure = useAxiosSecure();
      const { refetch, data: users = [] } = useQuery({
           queryKey: ["users"],
@@ -26,10 +26,6 @@ const ManageUser = () => {
      const handleSelectChange = (event) => {
           setSelectedOption(event.target.value);
      };
-
-     // const handleButtonClick = () => {
-
-     // };
      const handleUserUpdate = (id) => {
           const updateRole = { selectedOption };
           console.log(updateRole);
