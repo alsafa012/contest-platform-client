@@ -34,7 +34,9 @@ const AddContextPage = () => {
                description:data.description,
                instruction:data.instruction,
                image: res.data.data.display_url,
-               participants:0
+               participants:0,
+               status:'pending'
+
           };
           console.log(addContext);
           const contextRes = await axiosSecure.post('/allContexts', addContext);

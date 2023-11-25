@@ -48,7 +48,8 @@ const myCreatedRouter = createBrowserRouter([
                },
                {
                     path: "/dashboard/manageContext",
-                    element:<ManageContext></ManageContext>
+                    element:<ManageContext></ManageContext>,
+                    loader:()=>fetch('http://localhost:5000/allContexts')
                },
                // creator Routes
                {
