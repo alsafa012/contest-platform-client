@@ -4,14 +4,9 @@ import Swal from "sweetalert2";
 // import useAdmin from "../../../../Components/hook/useAdmin";
 // import useAuth from "../../../../Components/hook/useAuth";
 import { useState } from "react";
+import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 
 const ManageUser = () => {
-     // const [category, setCategory] = useState("");
-     // const [isAdmin] = useAdmin();
-     // console.log(isAdmin);
-     // const { user } = useAuth();
-     // const currentUser = user?.email;
-     // console.log(currentUser);
      const axiosSecure = useAxiosSecure();
      const { refetch, data: users = [] } = useQuery({
           queryKey: ["users"],
@@ -22,7 +17,6 @@ const ManageUser = () => {
      });
 
      const [selectedOption, setSelectedOption] = useState("");
-
      const handleSelectChange = (event) => {
           setSelectedOption(event.target.value);
      };
@@ -111,18 +105,18 @@ const ManageUser = () => {
           <div>
                <div>
                     <div className="flex justify-evenly">
-                         <h2 className="text-3xl font-medium">All Users</h2>
-                         <h2 className="text-3xl font-medium">
+                         <SectionTitle subHeading={`Total Users: ${users.length}`}></SectionTitle>
+                         {/* <h2 className="text-3xl font-medium"> */}
                               {/* <p>{users.length}</p> */}
-                              Total Users: {users.length}
-                         </h2>
+                              
+                         {/* </h2> */}
                     </div>
                     <div>
                          <div className="overflow-x-auto">
                               <table className="table">
                                    {/* head */}
                                    <thead>
-                                        <tr>
+                                        <tr className="font-medium text-black">
                                              <th></th>
                                              <th>Name</th>
                                              <th>Email</th>
@@ -142,7 +136,7 @@ const ManageUser = () => {
                                                   <td>{user.role}</td>
                                                   <td>
                                                        <select
-                                                       className="p-2 mr-2 rounded-xl"
+                                                       className="p-2 mr-2 rounded-xl bg-green-300 text-black"
                                                             name=""
                                                             id=""
                                                             onChange={
@@ -163,7 +157,7 @@ const ManageUser = () => {
                                                             </option>
                                                        </select>
                                                        <button
-                                                            className="btn"
+                                                            className="btn red"
                                                             onClick={() =>
                                                                  handleUserUpdate(
                                                                       user._id

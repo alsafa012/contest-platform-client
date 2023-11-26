@@ -13,10 +13,10 @@ const ScrollCount = () => {
                          onExit={() => setScrollTrigger(false)}
                     >
                          <div className="relative w-full">
-                              <div className=" h-[300px] bg-[url('https://i.ibb.co/1Xs8qWX/counter-bg.jpg')] bg-fixed bg-cover bg-center opacity-70"></div>
+                              <div className=" h-[300px] bg-[url('https://i.ibb.co/cTCW7LV/images-4.jpg')] bg-fixed bg-cover object-fill bg-center"></div>
                               <div className="absolute top-4 space-y-3 md:space-y-0 md:top-[45%] w-full md:flex md:justify-around text-center md:items-center md:gap-5">
                                    <div>
-                                        <h2 className="text-3xl md:text-4xl font-bold text-black">
+                                        <h2 className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              {scrollTrigger && (
                                                   <CountUp
                                                        className="text-[#FF444A]"
@@ -27,12 +27,12 @@ const ScrollCount = () => {
                                              )}
                                              +
                                         </h2>
-                                        <p className="text-3xl md:text-4xl font-bold text-black">
+                                        <p className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              Contest
                                         </p>
                                    </div>
                                    <div>
-                                        <h2 className="text-3xl md:text-4xl font-bold text-black">
+                                        <h2 className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              <span>Up to</span>
                                              {scrollTrigger && (
                                                   <CountUp
@@ -44,12 +44,12 @@ const ScrollCount = () => {
                                              )}
                                              +
                                         </h2>
-                                        <p className="text-3xl md:text-4xl font-bold text-black">
+                                        <p className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              Participants
                                         </p>
                                    </div>
                                    <div>
-                                        <h2 className="text-3xl md:text-4xl font-bold text-black">
+                                        <h2 className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              {scrollTrigger && (
                                                   <CountUp
                                                        className="text-[#FF444A]"
@@ -60,7 +60,7 @@ const ScrollCount = () => {
                                              )}
                                              %
                                         </h2>
-                                        <p className="text-3xl md:text-4xl font-bold text-black">
+                                        <p className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              Hygienic
                                         </p>
                                    </div>

@@ -39,13 +39,13 @@ const AddContextPage = () => {
 
           };
           console.log(addContext);
-          const contextRes = await axiosSecure.post('/allContexts', addContext);
+          const contextRes = await axiosSecure.post('/createContext', addContext);
           console.log(contextRes.data);
           console.log('object');
           if(contextRes.data.insertedId){
                Swal.fire({
                     title: "Good job!",
-                    text: `${data.name} is added in the menu`,
+                    text: `${data.name} contest added Successfully`,
                     icon: "success"
                   });
           }
@@ -184,7 +184,7 @@ const AddContextPage = () => {
                     </div>
                     <div className="text-center">
 
-                    <button className="btn mt-2 w-1/2 text-center bg-[#ff6900] text-white border-none">
+                    <button className="btn mt-2 w-1/2 text-center red">
                          Create Context
                     </button>
                     </div>

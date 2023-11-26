@@ -1,30 +1,44 @@
 import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 
 const ManageContext = () => {
      const axiosSecure = useAxiosSecure();
      const { data: contexts = [], refetch } = useQuery({
           queryKey: ["contexts"],
           queryFn: async () => {
-               const res = await axiosSecure.get("/allContexts");
+               const res = await axiosSecure.get("/createContext");
                return res.data;
           },
      });
      const handleUpdateStatus = (id) => {
-          const contextUpdateStatus = { status: "confirmed" };
-          axiosSecure
-               .patch(`/allContexts/${id}`, contextUpdateStatus)
-               .then((res) => {
-                    if (res.data.modifiedCount > 0) {
-                         Swal.fire({
-                              title: "Good job!",
-                              text: "You clicked the button!",
-                              icon: "success",
+          Swal.fire({
+               title: "Are you sure?",
+               text: "Want to confirm this Context?",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes, di it!"
+             }).then((result) => {
+               if (result.isConfirmed) {
+                    const contextUpdateStatus = { status: "confirmed" };
+                    axiosSecure
+                         .patch(`/createContext/${id}`, contextUpdateStatus)
+                         .then((res) => {
+                              if (res.data.modifiedCount > 0) {
+                                   Swal.fire({
+                                        title: "Good job!",
+                                        text: "context has been confirmed!",
+                                        icon: "success",
+                                   });
+                                   refetch();
+                              }
                          });
-                         refetch();
-                    }
-               });
+                 
+               }
+             });
      };
      const handleRemoveStatus = (id) => {
           Swal.fire({
@@ -37,7 +51,7 @@ const ManageContext = () => {
                confirmButtonText: "Yes, Remove this context!",
           }).then((result) => {
                if (result.isConfirmed) {
-                    axiosSecure.delete(`/allContexts/${id}`).then((res) => {
+                    axiosSecure.delete(`/createContext/${id}`).then((res) => {
                          if (res.data.deletedCount > 0) {
                               Swal.fire({
                                    title: "Deleted!",
@@ -52,13 +66,14 @@ const ManageContext = () => {
      };
      return (
           <div>
-               <p className="text-center font-bold text-2xl p-5">Total Context: {contexts.length}</p>
+               {/* <p className="text-center font-bold text-2xl p-5">Total Context: {contexts.length}</p> */}
+               <SectionTitle subHeading={`Total Context: ${contexts.length}`}></SectionTitle>
                <div>
                     <div className="overflow-x-auto text-black">
                          <table className="table">
                               {/* head */}
                               <thead>
-                                   <tr>
+                                   <tr className="font-medium text-black">
                                         <th></th>
                                         <th>Context Name</th>
                                         <th>Creator Email</th>
@@ -73,10 +88,10 @@ const ManageContext = () => {
                                              <td>{info?.name}</td>
                                              <td>{info?.email}</td>
                                              <td>
-                                                  {info.status === "confirm" ? (
-                                                       <span className="text-red-500">
-                                                            Service Confirmed
-                                                       </span>
+                                                  {info.status === "confirmed" ? (
+                                                       <button className="red btn btn-sm" disabled>
+                                                            Confirmed
+                                                       </button>
                                                   ) : (
                                                        <button
                                                             onClick={() =>
@@ -84,7 +99,7 @@ const ManageContext = () => {
                                                                       info._id
                                                                  )
                                                             }
-                                                            className="btn btn-ghost btn-xs"
+                                                            className="btn btn-ghost btn-xs bg-green-300"
                                                        >
                                                             {info?.status}
                                                        </button>
@@ -97,7 +112,7 @@ const ManageContext = () => {
                                                                  info._id
                                                             )
                                                        }
-                                                       className="btn btn-ghost btn-xs"
+                                                       className="btn btn-ghost btn-xs red"
                                                   >
                                                        Remove
                                                   </button>

@@ -9,11 +9,11 @@ const Footer = () => {
                     <footer className="p-10 bg-[#272530] text-white font-medium rounded">
                          <Container>
                               <div className="footer">
-                                   <aside>
+                                   <aside className="text-center">
                                         <img
-                                             className="w-[80px] h-[80px]"
+                                             className="w-[80px] h-[80px] rounded-full mx-auto"
                                              // todo: add logo
-                                             src=""
+                                             src="https://i.ibb.co/NWVnrNn/png-transparent-computer-icons-translation-context-word-intellectual-miscellaneous-company-text-thum.png"
                                              alt=""
                                         />
                                         <p className="text-xl font-medium">

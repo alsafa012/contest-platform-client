@@ -139,7 +139,7 @@ const Navbar = () => {
                                    </div>
                                    <img
                                         className="rounded-full h-[50px] w-[50px]"
-                                        src=""
+                                        src="https://i.ibb.co/NWVnrNn/png-transparent-computer-icons-translation-context-word-intellectual-miscellaneous-company-text-thum.png"
                                         alt=""
                                    />
 
@@ -189,13 +189,6 @@ const Navbar = () => {
                                                                       }
                                                                  </h2>
                                                             </li>
-                                                            {/* <li>
-                                                                 <Link to="/dashboard">
-                                                                      <h4>
-                                                                           Dashboard
-                                                                      </h4>
-                                                                 </Link>
-                                                            </li> */}
                                                             
                                                          <div>
                                                          {user && isAdmin && (

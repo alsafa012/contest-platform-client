@@ -7,8 +7,10 @@
 body {
      font-family: "Poppins", sans-serif;
 }
-.ok{
-  font-size: 30px;
+.red {
+     background-color: #ff444a;
+     border: none;
+     color: white;
 }
 /* color: rgba(255, 255, 255, 0.87);
 background-color: #242424; */

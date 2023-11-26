@@ -3,6 +3,7 @@ import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Container from "../../Shared/Container/Container";
 import ScrollCount from "./ScrollCountSection/ScrollCount";
+import PopularContestSection from "./PopularContestSection/PopularContestSection";
 const HomePage = () => {
      return (
           <div>
@@ -10,6 +11,7 @@ const HomePage = () => {
 
                <Container>
                     <BannerSection></BannerSection>
+                    <PopularContestSection></PopularContestSection>
                     <ScrollCount></ScrollCount>
                </Container>
           </div>
