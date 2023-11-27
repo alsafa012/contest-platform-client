@@ -15,6 +15,7 @@ import AddContextPage from "../Pages/Dashboard/CreatorDashboard/AddContextPage/A
 import ContestDetailsPage from "../Pages/ContestDetailsPage/ContestDetailsPage";
 import MyCreatedContextPage from "../Pages/Dashboard/CreatorDashboard/MyCreatedContextPage/MyCreatedContextPage";
 import UpdateContest from "../Pages/Dashboard/CreatorDashboard/UpdateContest/UpdateContest";
+import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -49,6 +50,14 @@ const myCreatedRouter = createBrowserRouter([
                               <UpdateContest></UpdateContest>
                          </PrivateRoute>
                     ),
+                    loader: ({ params }) =>
+                         fetch(
+                              `http://localhost:5000/createContext/${params.id}`
+                         ),
+               },
+               {
+                    path: "/payment/:id",
+                    element: <PaymentPage></PaymentPage>,
                     loader: ({ params }) =>
                          fetch(
                               `http://localhost:5000/createContext/${params.id}`
