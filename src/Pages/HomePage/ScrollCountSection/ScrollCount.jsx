@@ -21,7 +21,7 @@ const ScrollCount = () => {
                                                   <CountUp
                                                        className="text-[#FF444A]"
                                                        start={0}
-                                                       end={65}
+                                                       end={55}
                                                        duration={2.75}
                                                   />
                                              )}
@@ -38,7 +38,7 @@ const ScrollCount = () => {
                                                   <CountUp
                                                        className="text-[#FF444A] ml-3"
                                                        start={0}
-                                                       end={50}
+                                                       end={80}
                                                        duration={2.75}
                                                   />
                                              )}
@@ -54,14 +54,14 @@ const ScrollCount = () => {
                                                   <CountUp
                                                        className="text-[#FF444A]"
                                                        start={0}
-                                                       end={100}
+                                                       end={30}
                                                        duration={2.75}
                                                   />
                                              )}
-                                             %
+                                             +
                                         </h2>
                                         <p className="text-3xl md:text-4xl font-bold text-yellow-50">
-                                             Hygienic
+                                             Creators
                                         </p>
                                    </div>
                               </div>

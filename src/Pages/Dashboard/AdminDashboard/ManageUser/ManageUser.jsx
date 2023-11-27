@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 // import useAuth from "../../../../Components/hook/useAuth";
 import { useState } from "react";
 import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
+import WebsiteTitle from "../../../../Components/WebsiteTitle/WebsiteTitle";
 
 const ManageUser = () => {
      const axiosSecure = useAxiosSecure();
@@ -104,6 +105,7 @@ const ManageUser = () => {
      return (
           <div>
                <div>
+                    <WebsiteTitle title={"Admin || Manage User"}></WebsiteTitle>
                     <div className="flex justify-evenly">
                          <SectionTitle subHeading={`Total Users: ${users.length}`}></SectionTitle>
                          {/* <h2 className="text-3xl font-medium"> */}

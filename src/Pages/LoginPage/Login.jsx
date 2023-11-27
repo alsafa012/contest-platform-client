@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/SocialLogins/SocialLogin";
 import useAuth from "../../Components/hook/useAuth";
 import Swal from "sweetalert2";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const Login = () => {
      const [showPassword, setShowPassword] = useState(false);
      const {user , userSignIn} = useAuth();
@@ -39,8 +40,8 @@ const Login = () => {
                <div>
                     <WebsiteTitle title={"Login"}></WebsiteTitle>
                     <div>
-                         <p className=" text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
-                              Sign Up Page
+                         <p className="text-center text-[#FF444A] mt-5">
+                              <SectionTitle subHeading={"Login Here"}></SectionTitle>
                          </p>
 
                          <form

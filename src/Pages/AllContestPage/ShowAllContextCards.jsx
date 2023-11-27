@@ -18,7 +18,7 @@ const ShowAllContextCards = ({ data }) => {
      console.log(data);
      return (
           <div>
-               <div className=" bg-base-100 shadow-xl rounded-lg">
+               <div className="bg-base-100 shadow-xl">
                     {/* <figure> */}
                     <img
                          className="w-full h-[200px] flex justify-center mb-3"
@@ -26,13 +26,15 @@ const ShowAllContextCards = ({ data }) => {
                          alt="Shoes"
                     />
                     {/* </figure> */}
-                    <div className="text-lg font-medium px-5">
-                         <h2 className="">Context-Name: {name}</h2>
-                         <p>Context Tag: {tag}</p>
+                    <div className="text-lg px-2 font-medium flex flex-col">
+                         <div className="flex-grow h-[200px]">
+                              <h2 className="">Contest-Name: {name}</h2>
+                         <p><small className="font-semibold text-blue-400">#{tag}</small></p>
                          <p>Total Participants: {participants} persons</p>
-                         <p>Entry Fee: {price}TK</p>
-                         <p>Prize Money: {prizeMoney}TK</p>
-                         <p>description: {description.slice(0, 30)}...</p>
+                         {/* <p>Entry Fee: ${price}</p> */}
+                         {/* <p>Prize Money: ${prizeMoney}</p> */}
+                         <p>description: {description}...</p>
+                         </div>
                          {/* <p className="text-red-400">Note: {instruction}</p> */}
                          <div className="text-center">
                               <Link to={`/details/${_id}`}>

@@ -8,6 +8,7 @@ import ShowAllContextCards from "./ShowAllContextCards";
 import useAxiosPublic from "../../Components/hook/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Components/hook/useAxiosSecure";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const AllContestPage = () => {
      const [allData, setAllData] = useState([]);
@@ -31,12 +32,19 @@ const AllContestPage = () => {
           <Container>
                <WebsiteTitle title={"All Contest Page"}></WebsiteTitle>
                <div className="min-h-screen">
-                    <p>{allData.length}</p>
+                    <div className="mt-8 mb-5">
+                         <SectionTitle
+                              subHeading={"All Contests"}
+                         ></SectionTitle>
+                    </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                          {allData.map(
                               (data) =>
                                    data.status === "confirmed" && (
-                                       <ShowAllContextCards key={data._id} data={data}></ShowAllContextCards>
+                                        <ShowAllContextCards
+                                             key={data._id}
+                                             data={data}
+                                        ></ShowAllContextCards>
                                    )
                          )}
                     </div>

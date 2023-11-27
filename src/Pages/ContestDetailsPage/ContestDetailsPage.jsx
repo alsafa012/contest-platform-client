@@ -26,10 +26,9 @@ const ContestDetailsPage = () => {
           status,
      } = data;
      return (
-          <div>
+          <div className="mb-10">
                <Container>
                     <WebsiteTitle title={"ContestDetailsPage"}></WebsiteTitle>
-               </Container>
                <div>
                     <div className=" bg-base-100 shadow-xl rounded-lg">
                          {/* <figure> */}
@@ -39,31 +38,30 @@ const ContestDetailsPage = () => {
                               alt="Shoes"
                          />
                          {/* </figure> */}
-                         <div className="text-lg font-medium px-5">
-                              <h2 className="">Context-Name: {name}</h2>
-                              <p>Context Tag: {tag}</p>
-                              <p>Entry Fee: {price}TK</p>
-                              <p>Total participants: {participants}persons</p>
-                              <p>Description: {description}TK</p>
-                              <p>Prize Money: {prizeMoney}</p>
-                              <p>Context deadLine:{deadline}</p>
+                         <div className="text-lg font-semibold px-5 ">
+                              <h2 className="">Contest-Name: {name}</h2>
+                              <p><small className="text-blue-400">#{tag}</small></p>
+                              <p>Entry Fee: ${price}</p>
+                              <p>Total participants: {participants} persons</p>
+                              <p>Description: ${description}</p>
+                              <p>Prize Money: ${prizeMoney}</p>
+                              {/* <p>Context deadLine:{deadline}</p> */}
+                              <p>description: {description}...</p>
                               {/* <p>description: {description.slice(0, 30)}...</p> */}
                               <p className="text-red-400">
                                    Note: {instruction}
                               </p>
                               <div className="text-center">
-                                   <h2>deadline</h2>
+                                   <h2 className="underline">Contest Deadline</h2>
                                    <CountDown deadline={deadline}></CountDown>
-                                   
-                                   
                               </div>
                               <div className="text-center">
                                    {isAdmin || isCreator ? (
-                                        <button disabled className="red btn w-full my-3">Register</button>
+                                        <button disabled className="red btn w-full my-3">Register Here</button>
                                    ) : (
                                         <Link to={`/payment/${_id}`}>
                                              <button className="btn red w-full my-3">
-                                                  Register
+                                                  Register Here
                                              </button>
                                         </Link>
                                    )}
@@ -71,6 +69,8 @@ const ContestDetailsPage = () => {
                          </div>
                     </div>
                </div>
+               </Container>
+
           </div>
      );
 };

@@ -12,8 +12,11 @@ const PaymentPage = () => {
           <div className="min-h-screen">
                <Container>
                     <WebsiteTitle title={"Payment Page"}></WebsiteTitle>
+                    <div className="my-10">
                     <SectionTitle subHeading={"Payment"}></SectionTitle>
-                    <div className="w-10/12 mx-auto">
+
+                    </div>
+                    <div className="md:w-1/2 mx-auto border ">
                          <Elements stripe={stripePromise}>
                               <CheckOutForm></CheckOutForm>
                          </Elements>

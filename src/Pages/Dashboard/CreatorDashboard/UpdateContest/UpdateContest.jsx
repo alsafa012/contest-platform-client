@@ -5,11 +5,17 @@ import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 import useAxiosPublic from "../../../../Components/hook/useAxiosPublic";
 import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const UpdateContest = () => {
+     const location = useLocation()
+     console.log(location);
+     const navigate = useNavigate();
+     const from = location.state || '/'
+     console.log(from);
+     console.log(from);
      const data = useLoaderData();
      // console.log(data.data);
      const {_id} = data;
@@ -45,6 +51,7 @@ const UpdateContest = () => {
                          text: "contest updated successfully",
                          icon: "success",
                     });
+                    navigate(from, {replace:true});
                }
           }
           console.log(res.data);

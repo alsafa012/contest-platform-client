@@ -12,7 +12,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddContextPage = () => {
      const {user}=useAuth();
-     const { register, handleSubmit } = useForm();
+     const { register, handleSubmit ,reset } = useForm();
      const axiosPublic = useAxiosPublic();
      const axiosSecure = useAxiosSecure();
      const onSubmit =async (data) => {
@@ -49,6 +49,7 @@ const AddContextPage = () => {
                     icon: "success"
                   });
           }
+          reset();
           
          }
          console.log(res.data);

@@ -6,10 +6,12 @@ import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 import useCreatedContext from "../../../../Components/hook/useCreatedContext";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MyCreatedContextPage = () => {
      const [createdContext, setCreatedContext] = useState([]);
+     const location = useLocation()
+     // console.log(location);
      const axiosSecure = useAxiosSecure();
      console.log(createdContext);
      const { user } = useAuth();
@@ -128,7 +130,7 @@ const MyCreatedContextPage = () => {
                                                             Confirmed by Admin
                                                        </button>
                                                   ) : (
-                                                       <Link to={`/updateContest/${info._id}`}>
+                                                       <Link state={location?.pathname} to={`/updateContest/${info._id}`}>
                                                             <button
                                                                  // onClick={() =>
                                                                  //      handleUpdateStatus(
@@ -149,7 +151,7 @@ const MyCreatedContextPage = () => {
                                                             className="red btn btn-sm"
                                                             disabled
                                                        >
-                                                            Confirmed
+                                                            Confirmed by Admin
                                                        </button>
                                                   ) : (
                                                        <button

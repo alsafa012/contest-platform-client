@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogins/SocialLogin";
 import useAxiosPublic from "../../Components/hook/useAxiosPublic";
 import moment from "moment/moment";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
      const { user, createUser, updateUserProfile } = useContext(AuthContext);
@@ -79,9 +80,10 @@ const Registration = () => {
           <div>
                <WebsiteTitle title={"Registration"}></WebsiteTitle>
                <div>
-                    <p className=" text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
-                         Sign Up Page
-                    </p>
+                    <div className=" font-bold mt-5 text-center text-[#FF444A]">
+                         
+                    <SectionTitle subHeading={"Sign Up Page"}></SectionTitle>
+                    </div>
 
                     <form
                          onSubmit={handleSubmit(onSubmit)}

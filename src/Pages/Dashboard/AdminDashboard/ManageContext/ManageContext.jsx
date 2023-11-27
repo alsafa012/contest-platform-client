@@ -2,6 +2,7 @@ import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
+import WebsiteTitle from "../../../../Components/WebsiteTitle/WebsiteTitle";
 
 const ManageContext = () => {
      const axiosSecure = useAxiosSecure();
@@ -12,7 +13,9 @@ const ManageContext = () => {
                return res.data;
           },
      });
-     const handleUpdateStatus = (id) => {
+     const handleUpdateStatus = (id) => {   
+          const initialCount = contexts.find(count=>count._id === id);
+          const finalParticipants = initialCount.participants;
           Swal.fire({
                title: "Are you sure?",
                text: "Want to confirm this Context?",
@@ -23,7 +26,8 @@ const ManageContext = () => {
                confirmButtonText: "Yes, di it!"
              }).then((result) => {
                if (result.isConfirmed) {
-                    const contextUpdateStatus = { status: "confirmed" };
+
+                    const contextUpdateStatus = { status: "confirmed",finalParticipants };
                     axiosSecure
                          .patch(`/createContext/${id}`, contextUpdateStatus)
                          .then((res) => {
@@ -33,6 +37,7 @@ const ManageContext = () => {
                                         text: "context has been confirmed!",
                                         icon: "success",
                                    });
+                                   // navigate(location.pathname && location.pathname);
                                    refetch();
                               }
                          });
@@ -67,6 +72,8 @@ const ManageContext = () => {
      return (
           <div>
                {/* <p className="text-center font-bold text-2xl p-5">Total Context: {contexts.length}</p> */}
+               <WebsiteTitle title={"Admin || Manage Contest"}></WebsiteTitle>
+
                <SectionTitle subHeading={`Total Context: ${contexts.length}`}></SectionTitle>
                <div>
                     <div className="overflow-x-auto text-black">

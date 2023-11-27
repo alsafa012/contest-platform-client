@@ -82,13 +82,13 @@ const UserProfile = () => {
                                                             alt=""
                                                        />
                                                   </div>
-                                                  <div className="flex gap-2 items-center text-lg font-medium mt-2 mb-3 ">
-                                                       <p className="border p-3 bg-white text-base rounded-xl w-1/2">
+                                                  <div className="md:flex gap-2 items-center text-lg font-medium mt-2 mb-3 ">
+                                                       <p className="border p-3 bg-white my-3 md:my-0 text-base rounded-xl md:w-1/2">
                                                             Email: {user?.email}
                                                             {/* Email: {email.name} */}
                                                        </p>
 
-                                                       <p className="border p-3 bg-white text-base rounded-xl w-1/2">
+                                                       <p className="border p-3 bg-white text-base rounded-xl md:w-1/2">
                                                             {/* {user?.displayName} */}
                                                             Name: {email.name}
                                                        </p>

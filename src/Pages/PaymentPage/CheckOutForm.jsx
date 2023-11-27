@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Components/hook/useAuth";
 import moment from "moment/moment";
 import Swal from "sweetalert2";
+import Container from "../../Shared/Container/Container";
 
 const CheckOutForm = () => {
      const [errorMessage, setErrorMessage] = useState("");
@@ -14,8 +15,15 @@ const CheckOutForm = () => {
      const elements = useElements();
      const axiosSecure = useAxiosSecure();
      const { user } = useAuth();
-     const { price, _id } = useLoaderData();
+     const { price, _id ,participants , status} = useLoaderData();
      const totalPrice = parseFloat(price).toFixed(2);
+     console.log(participants);
+     const initialParticipants = parseInt(participants);
+     const finalParticipants = initialParticipants + 1;
+     // const status = status 
+     const totalParticipants = {finalParticipants,status}
+     console.log(totalParticipants);
+     
      useEffect(() => {
           axiosSecure
                .post("/create-payment-intent", { price: totalPrice })
@@ -85,10 +93,18 @@ const CheckOutForm = () => {
                                    console.log(res.data);
                               }
                          });
+                         // increment Participants
+                         axiosSecure.patch(`/createContext/${_id}`,totalParticipants)
+                         .then(res=>{
+                              console.log("participants",res.data);
+                         })
                }
           }
      };
      return (
+
+          <Container>
+
           <form onSubmit={handleSubmit}>
                <CardElement
                     options={{
@@ -106,20 +122,25 @@ const CheckOutForm = () => {
                          },
                     }}
                />
+               <div className="text-center">
+                    
                <button
-                    className="btn red"
+                    className="btn red w-[40%] mt-16 mb-2"
                     type="submit"
                     disabled={!stripe || !clientSecret}
                >
                     Pay
                </button>
-               <p className="text-red-500">{errorMessage}</p>
+               </div>
+               <p className="text-red-500 text-center">{errorMessage}</p>
                {transactionId && (
-                    <p className="text-green-600">
+                    <p className="text-green-600 text-center">
                          Your Transaction Id:{transactionId}
                     </p>
                )}
           </form>
+          </Container>
+
      );
 };
 
