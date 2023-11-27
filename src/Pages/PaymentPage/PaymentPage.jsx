@@ -16,7 +16,7 @@ const PaymentPage = () => {
                     <SectionTitle subHeading={"Payment"}></SectionTitle>
 
                     </div>
-                    <div className="md:w-1/2 mx-auto border ">
+                    <div className="md:w-1/2 mx-auto">
                          <Elements stripe={stripePromise}>
                               <CheckOutForm></CheckOutForm>
                          </Elements>

@@ -108,10 +108,10 @@ const MyCreatedContextPage = () => {
                               <thead>
                                    <tr className="font-medium text-black">
                                         <th></th>
-                                        <th>Context Name</th>
+                                        <th>Contest Name</th>
                                         <th>Creator Tag</th>
-                                        <th>Update Context Status</th>
-                                        <th>Delete Context</th>
+                                        <th>Update Contest Status</th>
+                                        <th>Delete Contest</th>
                                    </tr>
                               </thead>
                               <tbody>

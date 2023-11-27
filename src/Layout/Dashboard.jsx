@@ -39,8 +39,8 @@ const Dashboard = () => {
                                              </NavLink>
                                         </li>
                                         <li>
-                                             <NavLink to="/dashboard/userProfile">
-                                                  Creator Profile
+                                             <NavLink to="/dashboard/contestSubmission">
+                                                 All Submissions
                                              </NavLink>
                                         </li>
                                    </>

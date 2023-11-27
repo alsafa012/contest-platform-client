@@ -29,13 +29,11 @@ const BannerSection = () => {
                                         </button>
                                    </div>
                                    <h1 className="mb-5 text-5xl font-bold">
-                                        Hello there
+                                   Welcome to OUR 
                                    </h1>
                                    <p className="mb-5">
-                                        Provident cupiditate voluptatem et in.
-                                        Quaerat fugiat ut assumenda excepturi
-                                        exercitationem quasi. In deleniti eaque
-                                        aut repudiandae et a id nisi.
+                                   <p>The ultimate platform where creativity knows no bounds. Unleash your talents, participate in exciting contests, and let your imagination soar. Join a community of like-minded individuals passionate about expressing themselves and pushing the boundaries of creativity. Ignite your spark, compete with the best, and let your creative journey begin!</p>
+
                                    </p>
                               </div>
                          </div>

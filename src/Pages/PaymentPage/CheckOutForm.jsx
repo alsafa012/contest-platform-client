@@ -15,7 +15,7 @@ const CheckOutForm = () => {
      const elements = useElements();
      const axiosSecure = useAxiosSecure();
      const { user } = useAuth();
-     const { price, _id ,participants , status} = useLoaderData();
+     const { price, _id ,participants , status ,name,email } = useLoaderData();
      const totalPrice = parseFloat(price).toFixed(2);
      console.log(participants);
      const initialParticipants = parseInt(participants);
@@ -76,8 +76,10 @@ const CheckOutForm = () => {
                          email: user?.email,
                          name: user?.displayName,
                          date: moment().format("MMMM Do YYYY, h:mm:ss a"),
+                         contestName:name,
                          userId: _id,
-                         winner: "pending",
+                         creatorEmail:email,
+                         status: "pending",
                          transactionId: paymentIntent.id,
                     };
                     console.log(registerUser);

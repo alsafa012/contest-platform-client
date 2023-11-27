@@ -16,6 +16,7 @@ import ContestDetailsPage from "../Pages/ContestDetailsPage/ContestDetailsPage";
 import MyCreatedContextPage from "../Pages/Dashboard/CreatorDashboard/MyCreatedContextPage/MyCreatedContextPage";
 import UpdateContest from "../Pages/Dashboard/CreatorDashboard/UpdateContest/UpdateContest";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
+import ContestSubmissionPage from "../Pages/Dashboard/CreatorDashboard/ContestSubmissionPage/ContestSubmissionPage";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -26,6 +27,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/",
                     element: <HomePage></HomePage>,
+                    loader:()=>fetch('http://localhost:5000/createContext')
                },
                {
                     path: "/allContest",
@@ -95,6 +97,11 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/dashboard/seeAllContext",
                     element: <MyCreatedContextPage></MyCreatedContextPage>,
+                    // loader:()=>fetch('http://localhost:5000/createContext')
+               },
+               {
+                    path: "/dashboard/contestSubmission",
+                    element: <ContestSubmissionPage></ContestSubmissionPage>,
                     // loader:()=>fetch('http://localhost:5000/createContext')
                },
                // user routes

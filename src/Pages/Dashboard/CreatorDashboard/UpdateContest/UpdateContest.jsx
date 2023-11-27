@@ -149,18 +149,18 @@ const UpdateContest = () => {
                                              />
                                         </div>
 
-                                        {/* Contest Deadline */}
+                                        {/* Contest deadLine */}
                                         <div className="form-control w-full">
                                              <label className="label">
                                                   <span className="label-text">
-                                                       Contest Deadline*
+                                                       Contest deadLine*
                                                   </span>
                                              </label>
                                              <input
                                                   {...register("date", {
                                                        required: true,
                                                   })}
-                                                  defaultValue={data.deadline}
+                                                  defaultValue={data.deadLine}
                                                   type="date"
                                                   placeholder="Price Money"
                                                   className="input input-bordered w-full"

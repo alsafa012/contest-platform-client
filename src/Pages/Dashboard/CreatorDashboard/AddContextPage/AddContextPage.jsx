@@ -58,8 +58,8 @@ const AddContextPage = () => {
 
      return (
           <Container>
-               <WebsiteTitle title={"Creator || Add Context"}></WebsiteTitle>
-               <SectionTitle subHeading={"Create A Context"}></SectionTitle>
+               <WebsiteTitle title={"Creator || Add Contest"}></WebsiteTitle>
+               <SectionTitle subHeading={"Create A Contest"}></SectionTitle>
               <div className="bg- p-2">
               <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-3 font-medium">
@@ -68,7 +68,7 @@ const AddContextPage = () => {
                           <div className="form-control w-full">
                               <label className="label">
                                    <span className="label-text">
-                                   Context Name*
+                                   Contest Name*
                                    </span>
                               </label>
                               <input
@@ -131,11 +131,11 @@ const AddContextPage = () => {
                                    />
                               </div>
                       
-                         {/* Contest Deadline */}
+                         {/* Contest deadLine */}
                          <div className="form-control w-full">
                                    <label className="label">
                                         <span className="label-text">
-                                        Contest Deadline*
+                                        Contest deadLine*
                                         </span>
                                    </label>
                                    <input
@@ -186,7 +186,7 @@ const AddContextPage = () => {
                     <div className="text-center">
 
                     <button className="btn mt-2 w-1/2 text-center red">
-                         Create Context
+                         Create Contest
                     </button>
                     </div>
                </form>

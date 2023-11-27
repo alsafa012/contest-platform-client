@@ -74,7 +74,7 @@ const ManageContext = () => {
                {/* <p className="text-center font-bold text-2xl p-5">Total Context: {contexts.length}</p> */}
                <WebsiteTitle title={"Admin || Manage Contest"}></WebsiteTitle>
 
-               <SectionTitle subHeading={`Total Context: ${contexts.length}`}></SectionTitle>
+               <SectionTitle subHeading={`Total Contest: ${contexts.length}`}></SectionTitle>
                <div>
                     <div className="overflow-x-auto text-black">
                          <table className="table">

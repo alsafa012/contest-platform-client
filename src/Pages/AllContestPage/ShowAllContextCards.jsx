@@ -8,7 +8,7 @@ const ShowAllContextCards = ({ data }) => {
           tag,
           price,
           prizeMoney,
-          deadline,
+          deadLine,
           description,
           instruction,
           image,
@@ -18,10 +18,10 @@ const ShowAllContextCards = ({ data }) => {
      console.log(data);
      return (
           <div>
-               <div className="bg-base-100 shadow-xl">
+               <div className="bg-base-100 shadow-xl rounded-lg">
                     {/* <figure> */}
                     <img
-                         className="w-full h-[200px] flex justify-center mb-3"
+                         className="w-full h-[200px] flex justify-center mb-3 rounded-t-lg"
                          src={image}
                          alt="Shoes"
                     />
