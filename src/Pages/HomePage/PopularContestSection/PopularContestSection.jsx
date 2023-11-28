@@ -3,7 +3,7 @@ import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+// import { Pagination } from "swiper/modules";
 import { Link, useLoaderData } from "react-router-dom";
 const PopularContestSection = () => {
      const allContest = useLoaderData();

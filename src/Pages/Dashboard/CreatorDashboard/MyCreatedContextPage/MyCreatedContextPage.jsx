@@ -100,7 +100,7 @@ const MyCreatedContextPage = () => {
                <WebsiteTitle title={"My Created Contests"}></WebsiteTitle>
                <SectionTitle subHeading={"My Created Context"}></SectionTitle>
                <div className="">
-                    <h2>{createdContext.length}</h2>
+                    {/* <h2>{createdContext.length}</h2> */}
 
                     <div className="overflow-x-auto text-black">
                          <table className="table">

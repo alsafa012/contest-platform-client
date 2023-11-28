@@ -5,6 +5,7 @@ import Container from "../../Shared/Container/Container";
 import ScrollCount from "./ScrollCountSection/ScrollCount";
 import PopularContestSection from "./PopularContestSection/PopularContestSection";
 import BestCreator from "./BestCreatorSection/BestCreator";
+import WinnerAdvertisesPage from "./WinnerAdvertisesPage/WinnerAdvertisesPage";
 const HomePage = () => {
      return (
           <div>
@@ -14,6 +15,7 @@ const HomePage = () => {
                     <BannerSection></BannerSection>
                     <PopularContestSection></PopularContestSection>
                     <BestCreator></BestCreator>
+                    <WinnerAdvertisesPage></WinnerAdvertisesPage>
                     <ScrollCount></ScrollCount>
                </Container>
           </div>

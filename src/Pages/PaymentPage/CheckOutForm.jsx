@@ -15,15 +15,26 @@ const CheckOutForm = () => {
      const elements = useElements();
      const axiosSecure = useAxiosSecure();
      const { user } = useAuth();
-     const { price, _id ,participants , status ,name,email,deadLine } = useLoaderData();
+     const {
+          price,
+          _id,
+          participants,
+          status,
+          name,
+          email,
+          deadLine,
+          image,
+          prizeMoney,
+          tag
+     } = useLoaderData();
      const totalPrice = parseFloat(price).toFixed(2);
      console.log(participants);
      const initialParticipants = parseInt(participants);
      const finalParticipants = initialParticipants + 1;
-     // const status = status 
-     const totalParticipants = {finalParticipants,status}
+     // const status = status
+     const totalParticipants = { finalParticipants, status };
      console.log(totalParticipants);
-     
+
      useEffect(() => {
           axiosSecure
                .post("/create-payment-intent", { price: totalPrice })
@@ -76,14 +87,17 @@ const CheckOutForm = () => {
                          email: user?.email,
                          name: user?.displayName,
                          date: moment().format("MMMM Do YYYY, h:mm:ss a"),
-                         contestName:name,
+                         contestName: name,
                          userId: _id,
-                         creatorEmail:email,
+                         creatorEmail: email,
                          status: "pending",
-                         register:'success',
+                         register: "success",
                          transactionId: paymentIntent.id,
-                         task:'pending',
+                         task: "pending",
                          deadLine: deadLine,
+                         contestImage: image,
+                         winnerPrizeMoney:prizeMoney,
+                         contestTag:tag
                     };
                     console.log(registerUser);
                     axiosSecure
@@ -98,54 +112,51 @@ const CheckOutForm = () => {
                                    console.log(res.data);
                               }
                          });
-                         // increment Participants
-                         axiosSecure.patch(`/createContext/${_id}`,totalParticipants)
-                         .then(res=>{
-                              console.log("participants",res.data);
-                         })
+                    // increment Participants
+                    axiosSecure
+                         .patch(`/createContext/${_id}`, totalParticipants)
+                         .then((res) => {
+                              console.log("participants", res.data);
+                         });
                }
           }
      };
      return (
-
           <Container>
-
-          <form onSubmit={handleSubmit}>
-               <CardElement
-                    options={{
-                         style: {
-                              base: {
-                                   fontSize: "16px",
-                                   color: "#424770",
-                                   "::placeholder": {
-                                        color: "#aab7c4",
+               <form onSubmit={handleSubmit}>
+                    <CardElement
+                         options={{
+                              style: {
+                                   base: {
+                                        fontSize: "16px",
+                                        color: "#424770",
+                                        "::placeholder": {
+                                             color: "#aab7c4",
+                                        },
+                                   },
+                                   invalid: {
+                                        color: "#9e2146",
                                    },
                               },
-                              invalid: {
-                                   color: "#9e2146",
-                              },
-                         },
-                    }}
-               />
-               <div className="text-center">
-                    
-               <button
-                    className="btn red w-[40%] mt-16 mb-2"
-                    type="submit"
-                    disabled={!stripe || !clientSecret}
-               >
-                    Pay
-               </button>
-               </div>
-               <p className="text-red-500 text-center">{errorMessage}</p>
-               {transactionId && (
-                    <p className="text-green-600 text-center">
-                         Your Transaction Id:{transactionId}
-                    </p>
-               )}
-          </form>
+                         }}
+                    />
+                    <div className="text-center">
+                         <button
+                              className="btn red w-[40%] mt-16 mb-2"
+                              type="submit"
+                              disabled={!stripe || !clientSecret}
+                         >
+                              Pay
+                         </button>
+                    </div>
+                    <p className="text-red-500 text-center">{errorMessage}</p>
+                    {transactionId && (
+                         <p className="text-green-600 text-center">
+                              Your Transaction Id:{transactionId}
+                         </p>
+                    )}
+               </form>
           </Container>
-
      );
 };
 
