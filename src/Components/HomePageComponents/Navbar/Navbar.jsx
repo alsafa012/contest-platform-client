@@ -72,34 +72,38 @@ const Navbar = () => {
                          Our Contests
                     </NavLink>
                </li>
-               <li>
-                    <NavLink
-                         to="/login"
-                         // className={({ isActive, isPending }) =>
-                         //      isPending
-                         //           ? "pending"
-                         //           : isActive
-                         //           ? "text-[#ff6900] underline"
-                         //           : ""
-                         // }
-                    >
-                         Login
-                    </NavLink>
-               </li>
-               <li>
-                    <NavLink
-                         to="/registration"
-                         // className={({ isActive, isPending }) =>
-                         //      isPending
-                         //           ? "pending"
-                         //           : isActive
-                         //           ? "text-[#ff6900] underline"
-                         //           : ""
-                         // }
-                    >
-                         Registration
-                    </NavLink>
-               </li>
+               {!user && (
+                    <li>
+                         <NavLink
+                              to="/login"
+                              // className={({ isActive, isPending }) =>
+                              //      isPending
+                              //           ? "pending"
+                              //           : isActive
+                              //           ? "text-[#ff6900] underline"
+                              //           : ""
+                              // }
+                         >
+                              Login
+                         </NavLink>
+                    </li>
+               )}
+               {!user && (
+                    <li>
+                         <NavLink
+                              to="/registration"
+                              // className={({ isActive, isPending }) =>
+                              //      isPending
+                              //           ? "pending"
+                              //           : isActive
+                              //           ? "text-[#ff6900] underline"
+                              //           : ""
+                              // }
+                         >
+                              Registration
+                         </NavLink>
+                    </li>
+               )}
           </>
      );
      return (
@@ -144,7 +148,7 @@ const Navbar = () => {
                                    />
 
                                    <p className="btn btn-ghost text-xl md:text-2xl text-white font-extrabold italic">
-                                        Contest Platform
+                                        Contest Hub
                                    </p>
                               </div>
                               <div className="navbar-center hidden lg:flex">
@@ -189,48 +193,50 @@ const Navbar = () => {
                                                                       }
                                                                  </h2>
                                                             </li>
-                                                            
-                                                         <div>
-                                                         {user && isAdmin && (
-                                                                 <>
-                                                                      <li>
-                                                                           <Link to="/dashboard/users">
-                                                                                <h4>
-                                                                                     Dashboard
-                                                                                </h4>
-                                                                           </Link>
-                                                                      </li>
-                                                                 </>
-                                                            )}
-                                                         </div>
-                                                         <div>
-                                                         {user && isCreator && (
-                                                                 <>
-                                                                      <li>
-                                                                           <Link to="/dashboard/createContext">
-                                                                                <h4>
-                                                                                     Dashboard
-                                                                                </h4>
-                                                                           </Link>
-                                                                      </li>
-                                                                 </>
-                                                            )}
-                                                         </div>
-                                                        <div>
 
-                                                            {user && !isAdmin &&
-                                                                 !isCreator && (
-                                                                      <>
-                                                                           <li>
-                                                                                <Link to="/dashboard/userProfile">
-                                                                                     <h4>
-                                                                                          Dashboard
-                                                                                     </h4>
-                                                                                </Link>
-                                                                           </li>
-                                                                      </>
-                                                                 )}
-                                                        </div>
+                                                            <div>
+                                                                 {user &&
+                                                                      isAdmin && (
+                                                                           <>
+                                                                                <li>
+                                                                                     <Link to="/dashboard/users">
+                                                                                          <h4>
+                                                                                               Dashboard
+                                                                                          </h4>
+                                                                                     </Link>
+                                                                                </li>
+                                                                           </>
+                                                                      )}
+                                                            </div>
+                                                            <div>
+                                                                 {user &&
+                                                                      isCreator && (
+                                                                           <>
+                                                                                <li>
+                                                                                     <Link to="/dashboard/createContext">
+                                                                                          <h4>
+                                                                                               Dashboard
+                                                                                          </h4>
+                                                                                     </Link>
+                                                                                </li>
+                                                                           </>
+                                                                      )}
+                                                            </div>
+                                                            <div>
+                                                                 {user &&
+                                                                      !isAdmin &&
+                                                                      !isCreator && (
+                                                                           <>
+                                                                                <li>
+                                                                                     <Link to="/dashboard/userProfile">
+                                                                                          <h4>
+                                                                                               Dashboard
+                                                                                          </h4>
+                                                                                     </Link>
+                                                                                </li>
+                                                                           </>
+                                                                      )}
+                                                            </div>
                                                             <li>
                                                                  {user ? (
                                                                       <button

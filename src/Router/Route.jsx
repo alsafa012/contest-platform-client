@@ -18,6 +18,7 @@ import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import ContestSubmissionPage from "../Pages/Dashboard/CreatorDashboard/ContestSubmissionPage/ContestSubmissionPage";
 import UserRegisteredContestPage from "../Pages/Dashboard/UserDashboard/UserRegisteredContestPage/UserRegisteredContestPage";
 import UserWinningContestPage from "../Pages/Dashboard/UserDashboard/UserWinningContestPage/UserWinningContestPage";
+import AuthProvider from "../Provider/AuthProvider";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -28,7 +29,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/",
                     element: <HomePage></HomePage>,
-                    loader:()=>fetch('http://localhost:5000/createContext')
+                    loader: () => fetch("http://localhost:5000/createContext"),
                },
                {
                     path: "/allContest",
@@ -60,65 +61,105 @@ const myCreatedRouter = createBrowserRouter([
                },
                {
                     path: "/payment/:id",
-                    element: <PaymentPage></PaymentPage>,
+                    element: (
+                         <PrivateRoute>
+                              <PaymentPage></PaymentPage>
+                         </PrivateRoute>
+                    ),
                     loader: ({ params }) =>
                          fetch(
                               `http://localhost:5000/createContext/${params.id}`
                          ),
                },
-               {
-                    path: "/login",
-                    element: <Login></Login>,
-               },
-               {
-                    path: "/registration",
-                    element: <Registration></Registration>,
-               },
           ],
      },
      {
           path: "/dashboard",
-          element: <Dashboard></Dashboard>,
+          element: (
+               <PrivateRoute>
+                    <Dashboard></Dashboard>
+               </PrivateRoute>
+          ),
           children: [
                // admin routes
                {
                     path: "/dashboard/users",
-                    element: <ManageUser></ManageUser>,
+                    element: (
+                         <PrivateRoute>
+                              <ManageUser></ManageUser>
+                         </PrivateRoute>
+                    ),
                },
                {
                     path: "/dashboard/manageContext",
-                    element: <ManageContext></ManageContext>,
+                    element: (
+                         <PrivateRoute>
+                              <ManageContext></ManageContext>
+                         </PrivateRoute>
+                    ),
                     loader: () => fetch("http://localhost:5000/createContext"),
                },
                // creator Routes
                {
                     path: "/dashboard/createContext",
-                    element: <AddContextPage></AddContextPage>,
+                    element: (
+                         <PrivateRoute>
+                              <AddContextPage></AddContextPage>
+                         </PrivateRoute>
+                    ),
                },
                {
                     path: "/dashboard/seeAllContext",
-                    element: <MyCreatedContextPage></MyCreatedContextPage>,
+                    element: (
+                         <PrivateRoute>
+                              <MyCreatedContextPage></MyCreatedContextPage>
+                         </PrivateRoute>
+                    ),
                     // loader:()=>fetch('http://localhost:5000/createContext')
                },
                {
                     path: "/dashboard/contestSubmission",
-                    element: <ContestSubmissionPage></ContestSubmissionPage>,
+                    element: (
+                         <PrivateRoute>
+                              <ContestSubmissionPage></ContestSubmissionPage>
+                         </PrivateRoute>
+                    ),
                     // loader:()=>fetch('http://localhost:5000/createContext')
                },
                // user routes
                {
                     path: "/dashboard/userRegister",
-                    element: <UserRegisteredContestPage></UserRegisteredContestPage>,
+                    element: (
+                         <PrivateRoute>
+                              <UserRegisteredContestPage></UserRegisteredContestPage>
+                         </PrivateRoute>
+                    ),
                },
                {
                     path: "/dashboard/userWinning",
-                    element: <UserWinningContestPage></UserWinningContestPage>,
+                    element: (
+                         <PrivateRoute>
+                              <UserWinningContestPage></UserWinningContestPage>
+                         </PrivateRoute>
+                    ),
                },
                {
                     path: "/dashboard/userProfile",
-                    element: <UserProfile></UserProfile>
+                    element: (
+                         <PrivateRoute>
+                              <UserProfile></UserProfile>
+                         </PrivateRoute>
+                    ),
                },
           ],
+     },
+     {
+          path: "/login",
+          element: <Login></Login>,
+     },
+     {
+          path: "/registration",
+          element: <Registration></Registration>,
      },
 ]);
 

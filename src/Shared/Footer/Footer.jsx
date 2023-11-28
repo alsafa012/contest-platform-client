@@ -17,7 +17,7 @@ const Footer = () => {
                                              alt=""
                                         />
                                         <p className="text-xl font-medium">
-                                             Contest Platform
+                                             Contest Hub
                                              <br />
                                              Providing reliable tech since 2022
                                         </p>

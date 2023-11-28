@@ -13,6 +13,18 @@ const BannerSection = () => {
                          <div className="hero-overlay bg-opacity-60"></div>
                          <div className="hero-content text-center text-neutral-content">
                               <div className="max-w-md">
+                                   <h1 className="mb-5 text-5xl font-bold">
+                                        Welcome to Contest HUB
+                                   </h1>
+                                   <p className="">
+                                        <p>
+                                             The ultimate platform where
+                                             creativity knows no bounds. Unleash
+                                             your talents, participate in
+                                             exciting contests, and let your
+                                             imagination soar.
+                                        </p>
+                                   </p>
                                    <div className="mt-4 md:mt-5 flex justify-center">
                                         <input
                                              id="inputField"
@@ -28,13 +40,6 @@ const BannerSection = () => {
                                              Search
                                         </button>
                                    </div>
-                                   <h1 className="mb-5 text-5xl font-bold">
-                                   Welcome to OUR 
-                                   </h1>
-                                   <p className="mb-5">
-                                   <p>The ultimate platform where creativity knows no bounds. Unleash your talents, participate in exciting contests, and let your imagination soar. Join a community of like-minded individuals passionate about expressing themselves and pushing the boundaries of creativity. Ignite your spark, compete with the best, and let your creative journey begin!</p>
-
-                                   </p>
                               </div>
                          </div>
                     </div>

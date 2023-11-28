@@ -100,9 +100,9 @@ const WinnerAdvertisesPage = () => {
                                                        alt="Shoes"
                                                   />
                                              </figure>
-                                             <div className="card-body font-semibold space-y-2">
+                                             <div className="card-body font-semibold">
                                                   <h2 className="card-title">
-                                                       Winner Name:{" "}
+                                                       Winner Name:
                                                        <span className="font-bold text-blue-400">
                                                             {data?.name}
                                                        </span>
@@ -119,9 +119,19 @@ const WinnerAdvertisesPage = () => {
                                                             }
                                                        </span>
                                                   </p>
+                                                  {/* <p>
+                                                       {
+                                                            data?.contestParticipants
+                                                       }
+                                                  </p> */}
                                                   <p>
                                                        Total Participants:{" "}
-                                                       {data?.participants}
+                                                       <span className="font-bold text-green-400 mr-1">
+                                                            {
+                                                                 data?.contestParticipants
+                                                            }
+                                                       </span> 
+                                                        Persons
                                                   </p>
                                              </div>
                                         </div>

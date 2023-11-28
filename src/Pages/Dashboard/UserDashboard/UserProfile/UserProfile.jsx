@@ -258,7 +258,12 @@ const UserProfile = () => {
                                    )
                          )}
                     </div>
-                    <div>
+                         <div className="mt-5">
+                              <SectionTitle
+                                   subHeading={"My Success"}
+                              ></SectionTitle>
+                         </div>
+                    <div className="flex justify-center -mt-5">
                          <PieChart width={400} height={400}>
                               <Pie
                                    data={data}
