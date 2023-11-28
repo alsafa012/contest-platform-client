@@ -28,12 +28,12 @@ const CheckOutForm = () => {
           tag
      } = useLoaderData();
      const totalPrice = parseFloat(price).toFixed(2);
-     console.log(participants);
+     // console.log(participants);
      const initialParticipants = parseInt(participants);
      const finalParticipants = initialParticipants + 1;
      // const status = status
      const totalParticipants = { finalParticipants, status };
-     console.log(totalParticipants);
+     // console.log(totalParticipants);
 
      useEffect(() => {
           axiosSecure
@@ -97,7 +97,8 @@ const CheckOutForm = () => {
                          deadLine: deadLine,
                          contestImage: image,
                          winnerPrizeMoney:prizeMoney,
-                         contestTag:tag
+                         contestTag:tag,
+                         contestParticipants:participants
                     };
                     console.log(registerUser);
                     axiosSecure

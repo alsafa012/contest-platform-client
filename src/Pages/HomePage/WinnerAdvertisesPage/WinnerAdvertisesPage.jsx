@@ -113,7 +113,15 @@ const WinnerAdvertisesPage = () => {
                                                   </p>
                                                   <p>
                                                        Winning Amount: $
-                                                       {data?.winnerPrizeMoney}
+                                                       <span className="text-green-400 font-bold">
+                                                            {
+                                                                 data?.winnerPrizeMoney
+                                                            }
+                                                       </span>
+                                                  </p>
+                                                  <p>
+                                                       Total Participants:{" "}
+                                                       {data?.participants}
                                                   </p>
                                              </div>
                                         </div>
