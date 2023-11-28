@@ -3,7 +3,7 @@ import axios from "axios";
 // import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-     baseURL: "http://localhost:5000"
+     baseURL: "https://context-platform-server.vercel.app"
 })
 const useAxiosSecure = () => {
 

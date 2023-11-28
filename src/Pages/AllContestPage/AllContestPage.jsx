@@ -7,7 +7,7 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const AllContestPage = () => {
      const [allData, setAllData] = useState([]); 
      useEffect(() => {
-          fetch("http://localhost:5000/createContext")
+          fetch("https://context-platform-server.vercel.app/createContext")
                .then((res) => res.json())
                .then((data) => setAllData(data));
      }, []);

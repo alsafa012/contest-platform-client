@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 const BestCreator = () => {
      const [bestCreator,setBestCreator]=useState([])
      useEffect(() => {
-          fetch("http://localhost:5000/bestCreator")
+          fetch("https://context-platform-server.vercel.app/bestCreator")
                .then((res) => res.json())
                .then((data) => setBestCreator(data));
      }, []);

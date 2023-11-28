@@ -30,7 +30,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/",
                     element: <HomePage></HomePage>,
-                    loader: () => fetch("http://localhost:5000/createContext"),
+                    loader: () => fetch("https://context-platform-server.vercel.app/createContext"),
                },
                {
                     path: "/contacts",
@@ -49,7 +49,7 @@ const myCreatedRouter = createBrowserRouter([
                     ),
                     loader: ({ params }) =>
                          fetch(
-                              `http://localhost:5000/createContext/${params.id}`
+                              `https://context-platform-server.vercel.app/createContext/${params.id}`
                          ),
                },
                {
@@ -61,7 +61,7 @@ const myCreatedRouter = createBrowserRouter([
                     ),
                     loader: ({ params }) =>
                          fetch(
-                              `http://localhost:5000/createContext/${params.id}`
+                              `https://context-platform-server.vercel.app/createContext/${params.id}`
                          ),
                },
                {
@@ -73,7 +73,7 @@ const myCreatedRouter = createBrowserRouter([
                     ),
                     loader: ({ params }) =>
                          fetch(
-                              `http://localhost:5000/createContext/${params.id}`
+                              `https://context-platform-server.vercel.app/createContext/${params.id}`
                          ),
                },
           ],
@@ -102,7 +102,7 @@ const myCreatedRouter = createBrowserRouter([
                               <ManageContext></ManageContext>
                          </PrivateRoute>
                     ),
-                    loader: () => fetch("http://localhost:5000/createContext"),
+                    loader: () => fetch("https://context-platform-server.vercel.app/createContext"),
                },
                // creator Routes
                {
@@ -120,7 +120,7 @@ const myCreatedRouter = createBrowserRouter([
                               <MyCreatedContextPage></MyCreatedContextPage>
                          </PrivateRoute>
                     ),
-                    // loader:()=>fetch('http://localhost:5000/createContext')
+                    // loader:()=>fetch('https://context-platform-server.vercel.app/createContext')
                },
                {
                     path: "/dashboard/contestSubmission",
@@ -129,7 +129,7 @@ const myCreatedRouter = createBrowserRouter([
                               <ContestSubmissionPage></ContestSubmissionPage>
                          </PrivateRoute>
                     ),
-                    // loader:()=>fetch('http://localhost:5000/createContext')
+                    // loader:()=>fetch('https://context-platform-server.vercel.app/createContext')
                },
                // user routes
                {

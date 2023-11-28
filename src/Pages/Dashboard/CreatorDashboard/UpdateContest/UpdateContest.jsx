@@ -63,7 +63,7 @@ const UpdateContest = () => {
                          title={"Creator || Update Context"}
                     ></WebsiteTitle>
                     <SectionTitle subHeading={"Update Context"}></SectionTitle>
-                    <p>{data._id}</p>
+                    {/* <p>{data._id}</p> */}
                     <div className="p-2">
                          <form onSubmit={handleSubmit(onSubmit)}>
                               <div className="space-y-3 font-medium">
