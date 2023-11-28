@@ -4,6 +4,13 @@ import useAuth from "../../../../Components/hook/useAuth";
 import Container from "../../../../Shared/Container/Container";
 import useAxiosPublic from "../../../../Components/hook/useAxiosPublic";
 import Swal from "sweetalert2";
+
+// import React, { PureComponent } from "react";
+import { PieChart, Pie, Cell, Legend } from "recharts";
+import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
+import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
+
+// user profile settings
 const UserProfile = () => {
      const { user, updateUserProfile } = useAuth();
      const axiosPublic = useAxiosPublic();
@@ -14,7 +21,59 @@ const UserProfile = () => {
                return res.data;
           },
      });
-     console.log(users);
+     // console.log(users);
+     const axiosSecure = useAxiosSecure();
+     const { data: registerUser = [] } = useQuery({
+          queryKey: ["registerUser"],
+          queryFn: async () => {
+               const res = await axiosSecure.get("/registerUser");
+               return res.data;
+          },
+     });
+     const loggedUser = registerUser.filter(
+          (info) => info?.email === user?.email
+     );
+     console.log(loggedUser);
+     const nothingWin = loggedUser.filter((info) => info.status === "pending");
+     const contestWin = loggedUser.filter((info) => info.status === "winner");
+     const nothingWinValue = nothingWin.length;
+     const contestWinValue = contestWin.length;
+     console.log(nothingWinValue);
+     console.log(contestWinValue);
+     const data = [
+          { name: "Nothing Win", value: nothingWinValue },
+          { name: "Winning", value: contestWinValue },
+     ];
+
+     const COLORS = ["#0088FE", "#00C49F"];
+     const RADIAN = Math.PI / 180;
+     const renderCustomizedLabel = ({
+          cx,
+          cy,
+          midAngle,
+          innerRadius,
+          outerRadius,
+          percent,
+     }) => {
+          const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+          const x = cx + radius * Math.cos(-midAngle * RADIAN);
+          const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+          return (
+               <text
+                    x={x}
+                    y={y}
+                    fill="white"
+                    textAnchor={x > cx ? "start" : "end"}
+                    dominantBaseline="central"
+               >
+                    {`${(percent * 100).toFixed(0)}%`}
+               </text>
+          );
+     };
+
+     // user profile settings
+
      const handleUpdateName = (id) => {
           // e.preventDefault();
           // const name = e.target.name.value;
@@ -65,6 +124,10 @@ const UserProfile = () => {
           <div>
                <Container>
                     <WebsiteTitle title={"Profile Update"}></WebsiteTitle>
+                    <div className="mt-5">
+                         <SectionTitle subHeading={"My Profile"}></SectionTitle>
+                    </div>
+
                     <div className="w-full mt-10">
                          {users.map(
                               (email) =>
@@ -194,6 +257,30 @@ const UserProfile = () => {
                                         </div>
                                    )
                          )}
+                    </div>
+                    <div>
+                         <PieChart width={400} height={400}>
+                              <Pie
+                                   data={data}
+                                   cx="50%"
+                                   cy="50%"
+                                   labelLine={false}
+                                   label={renderCustomizedLabel}
+                                   outerRadius={80}
+                                   fill="#8884d8"
+                                   dataKey="value"
+                              >
+                                   {data.map((entry, index) => (
+                                        <Cell
+                                             key={`cell-${index}`}
+                                             fill={
+                                                  COLORS[index % COLORS.length]
+                                             }
+                                        />
+                                   ))}
+                              </Pie>
+                              <Legend />
+                         </PieChart>
                     </div>
                </Container>
                {/* <form onSubmit={handleUpdateName}>

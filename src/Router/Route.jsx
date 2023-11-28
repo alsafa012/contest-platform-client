@@ -8,7 +8,6 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AllContestPage from "../Pages/AllContestPage/AllContestPage";
 import ManageUser from "../Pages/Dashboard/AdminDashboard/ManageUser/ManageUser";
-import AdminRoute from "./AdminRoute";
 import ManageContext from "../Pages/Dashboard/AdminDashboard/ManageContext/ManageContext";
 import UserProfile from "../Pages/Dashboard/UserDashboard/UserProfile/UserProfile";
 import AddContextPage from "../Pages/Dashboard/CreatorDashboard/AddContextPage/AddContextPage";
@@ -117,7 +116,7 @@ const myCreatedRouter = createBrowserRouter([
                },
                {
                     path: "/dashboard/userProfile",
-                    element: <UserProfile></UserProfile>,
+                    element: <UserProfile></UserProfile>
                },
           ],
      },
