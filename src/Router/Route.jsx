@@ -19,6 +19,7 @@ import ContestSubmissionPage from "../Pages/Dashboard/CreatorDashboard/ContestSu
 import UserRegisteredContestPage from "../Pages/Dashboard/UserDashboard/UserRegisteredContestPage/UserRegisteredContestPage";
 import UserWinningContestPage from "../Pages/Dashboard/UserDashboard/UserWinningContestPage/UserWinningContestPage";
 import AuthProvider from "../Provider/AuthProvider";
+import ContactUsPage from "../Pages/ContactUsPage/ContactUsPage";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -30,6 +31,10 @@ const myCreatedRouter = createBrowserRouter([
                     path: "/",
                     element: <HomePage></HomePage>,
                     loader: () => fetch("http://localhost:5000/createContext"),
+               },
+               {
+                    path: "/contacts",
+                    element: <ContactUsPage></ContactUsPage>,
                },
                {
                     path: "/allContest",

@@ -9,11 +9,12 @@ const ErrorPage = () => {
                     <div className="mt-5 md:mt-10">
                          <div className="flex justify-center items-center gap-2 md:gap-5">
                               <img
-                                   className=" w-[100px] lg:w-[300px] h-[120px] lg:h-[300px] object-fill"
+                                   className=" w-[400px] lg:w-[500px] h-[400px] lg:h-[400px] rounded-full object-fill"
+                                   src="https://i.ibb.co/G3FHn5C/image-41.webp"
                                    // src="https://i.ibb.co/6ng70Gv/01.png"
                                    alt=""
                               />
-                              <img
+                              {/* <img
                                    className=" w-[100px] lg:w-[300px] h-[120px] lg:h-[300px] object-fill"
                                    // src="https://i.ibb.co/BGxbz4V/02.png"
                                    alt=""
@@ -22,7 +23,7 @@ const ErrorPage = () => {
                                    className=" w-[100px] lg:w-[300px] h-[120px] lg:h-[300px] object-fill"
                                    // src="https://i.ibb.co/6ng70Gv/01.png"
                                    alt=""
-                              />
+                              /> */}
                          </div>
 
                          <p className="my-5 text-center text-2xl md:text-4xl font-bold">

@@ -72,6 +72,20 @@ const Navbar = () => {
                          Our Contests
                     </NavLink>
                </li>
+               <li>
+                    <NavLink
+                         to="/contacts"
+                         // className={({ isActive, isPending }) =>
+                         //      isPending
+                         //           ? "pending"
+                         //           : isActive
+                         //           ? "text-[#ff6900] underline"
+                         //           : ""
+                         // }
+                    >
+                         Contact Us
+                    </NavLink>
+               </li>
                {!user && (
                     <li>
                          <NavLink
