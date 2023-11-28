@@ -17,6 +17,8 @@ import MyCreatedContextPage from "../Pages/Dashboard/CreatorDashboard/MyCreatedC
 import UpdateContest from "../Pages/Dashboard/CreatorDashboard/UpdateContest/UpdateContest";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import ContestSubmissionPage from "../Pages/Dashboard/CreatorDashboard/ContestSubmissionPage/ContestSubmissionPage";
+import UserRegisteredContestPage from "../Pages/Dashboard/UserDashboard/UserRegisteredContestPage/UserRegisteredContestPage";
+import UserWinningContestPage from "../Pages/Dashboard/UserDashboard/UserWinningContestPage/UserWinningContestPage";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -106,8 +108,12 @@ const myCreatedRouter = createBrowserRouter([
                },
                // user routes
                {
-                    path: "/dashboard/userProfile",
-                    element: <UserProfile></UserProfile>,
+                    path: "/dashboard/userRegister",
+                    element: <UserRegisteredContestPage></UserRegisteredContestPage>,
+               },
+               {
+                    path: "/dashboard/userWinning",
+                    element: <UserWinningContestPage></UserWinningContestPage>,
                },
                {
                     path: "/dashboard/userProfile",

@@ -81,11 +81,11 @@ const ContestSubmissionPage = () => {
                                    
                                    <thead>
                                         <tr className="font-medium text-black">
-                                             <th></th>
+                                             {/* <th></th> */}
                                              <th>Contest Name</th>
                                              <th>Participator MAne</th>
                                              <th>Participator Email</th>
-                                             <th>Manage Role</th>
+                                             <th>Task Submission</th>
                                              <th>Winner Announce</th>
                                         </tr>
                                    </thead>
@@ -98,7 +98,7 @@ const ContestSubmissionPage = () => {
                                                             className="hover"
                                                             key={info._id}
                                                        >
-                                                            <th>{index + 1}</th>
+                                                            {/* <th>{index + 1}</th> */}
                                                             <td>
                                                                  {
                                                                       info?.contestName
@@ -111,7 +111,7 @@ const ContestSubmissionPage = () => {
                                                                  {info.email}
                                                             </td>
                                                             <td>
-                                                                 {info.email}
+                                                                 {info.task}
                                                             </td>
                                                             <td>
                                                                  {info.status ===

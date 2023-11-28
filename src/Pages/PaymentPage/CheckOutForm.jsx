@@ -15,7 +15,7 @@ const CheckOutForm = () => {
      const elements = useElements();
      const axiosSecure = useAxiosSecure();
      const { user } = useAuth();
-     const { price, _id ,participants , status ,name,email } = useLoaderData();
+     const { price, _id ,participants , status ,name,email,deadLine } = useLoaderData();
      const totalPrice = parseFloat(price).toFixed(2);
      console.log(participants);
      const initialParticipants = parseInt(participants);
@@ -82,6 +82,8 @@ const CheckOutForm = () => {
                          status: "pending",
                          register:'success',
                          transactionId: paymentIntent.id,
+                         task:'pending',
+                         deadLine: deadLine,
                     };
                     console.log(registerUser);
                     axiosSecure

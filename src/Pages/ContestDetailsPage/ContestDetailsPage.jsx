@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Container from "../../Shared/Container/Container";
 import WebsiteTitle from "../../Components/WebsiteTitle/WebsiteTitle";
@@ -21,8 +20,6 @@ const ContestDetailsPage = () => {
                return res.data;
           },
      });
-     // const [isCreatot]=useCteau
-     // console.log(data);
      const { user } = useAuth();
      const {
           _id,
@@ -36,25 +33,24 @@ const ContestDetailsPage = () => {
           image,
           participants,
      } = data;
-     // console.log(email);
-     const [userData, setUserData] = useState(true);
-     useEffect(() => {
-          //    const filter = registerUser.find(item=>console.log(item.email === user?.))
-          const filter = registerUser.find(
-               (item) => item?.email === user?.email
-          );
-          // console.log(filter);
-          setUserData(filter);
-     }, [registerUser, user?.email]);
-     console.log("pay  dome", userData);
-     // console.log(user?.email);
 
+     // time counter
      const SubmissiondeadLine = new Date(deadLine).getTime();
-     // console.log(SubmissiondeadLine);
      const today = new Date().getTime();
-     // console.log(today);
      const difference = SubmissiondeadLine - today;
+     // console.log(today);
+     // console.log(SubmissiondeadLine);
      // console.log(difference);
+     console.log('auth',user?.email);
+     const userExist = registerUser.filter(item=>item.email === user?.email)
+     console.log( 'userExist',userExist);
+     const isExist = userExist.find(item=>item.userId === _id);
+     console.log('isExist',isExist);
+         
+
+
+
+
 
      return (
           <div className="mb-10">
@@ -98,8 +94,8 @@ const ContestDetailsPage = () => {
                                    </div>
                                    <div className="text-center">
                                         {isAdmin ||
-                                        isCreator || userData ||
-                                        difference < 1 ? (
+                                        isCreator ||
+                                        difference < 1 || isExist ? (
                                              <button
                                                   disabled
                                                   className="red btn w-full my-3"

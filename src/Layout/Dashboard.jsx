@@ -40,7 +40,7 @@ const Dashboard = () => {
                                         </li>
                                         <li>
                                              <NavLink to="/dashboard/contestSubmission">
-                                                 All Submissions
+                                                  All Submissions
                                              </NavLink>
                                         </li>
                                    </>
@@ -49,13 +49,13 @@ const Dashboard = () => {
                               {!isAdmin && !isCreator && (
                                    <>
                                         <li>
-                                             <NavLink to="/dashboard/allContext">
-                                                  Participated Contest
+                                             <NavLink to="/dashboard/userRegister">
+                                                  My Registered Contest
                                              </NavLink>
                                         </li>
                                         <li>
-                                             <NavLink to="/dashboard/userProfile">
-                                                  My Winning Contest Page
+                                             <NavLink to="/dashboard/userWinning">
+                                                  My Winning Contest
                                              </NavLink>
                                         </li>
                                         <li>
