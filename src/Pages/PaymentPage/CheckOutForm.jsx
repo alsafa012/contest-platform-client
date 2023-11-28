@@ -80,6 +80,7 @@ const CheckOutForm = () => {
                          userId: _id,
                          creatorEmail:email,
                          status: "pending",
+                         register:'success',
                          transactionId: paymentIntent.id,
                     };
                     console.log(registerUser);

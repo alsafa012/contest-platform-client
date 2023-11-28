@@ -64,11 +64,11 @@ const Registration = () => {
                               console.log(error);
                          });
 
-                    Swal.fire(
-                         "Good job!",
-                         "User created successfully",
-                         "success"
-                    );
+                    // Swal.fire(
+                    //      "Good job!",
+                    //      "User created successfully",
+                    //      "success"
+                    // );
 
                     navigate(from, { replace: true });
                })
