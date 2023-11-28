@@ -9,7 +9,8 @@ import Swal from "sweetalert2";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const Login = () => {
      const [showPassword, setShowPassword] = useState(false);
-     const {user , userSignIn} = useAuth();
+     const [errorMessage, setErrorMessage] = useState(false);
+     const { user, userSignIn } = useAuth();
      const location = useLocation();
      const navigate = useNavigate();
      const from = location?.state?.from?.pathname || "/";
@@ -21,19 +22,21 @@ const Login = () => {
      const onSubmit = (data) => {
           console.log(data);
           userSignIn(data.email, data.password)
-          .then((result) => {
-               navigate(from, { replace: true });
-               console.log(result.user);
-               Swal.fire(
-                    "Good job!",
-                    "User login successfully",
-                    "success"
-               );
-          })
-          .catch((error) => {
-               console.log(error);
-          })
-                 
+               .then((result) => {
+                    navigate(from, { replace: true });
+                    console.log(result.user);
+                    Swal.fire(
+                         "Good job!",
+                         "User login successfully",
+                         "success"
+                    );
+               })
+               .catch((error) => {
+                    setErrorMessage(
+                         "User login failed..! Invalid email or password"
+                    );
+                    // console.log(error);
+               });
      };
      return (
           <div>
@@ -41,7 +44,9 @@ const Login = () => {
                     <WebsiteTitle title={"Login"}></WebsiteTitle>
                     <div>
                          <p className="text-center text-[#FF444A] mt-5">
-                              <SectionTitle subHeading={"Login Here"}></SectionTitle>
+                              <SectionTitle
+                                   subHeading={"Login Here"}
+                              ></SectionTitle>
                          </p>
 
                          <form
@@ -128,6 +133,13 @@ const Login = () => {
                                         )}
                                    </span>
                               </div>
+                              <h3>
+                                   {errorMessage && (
+                                        <p className="text-red-600 pt-1">
+                                             {errorMessage}
+                                        </p>
+                                   )}
+                              </h3>
                               <div className="form-control mt-6">
                                    <input
                                         className="btn bg-[#FF444A] text-white"

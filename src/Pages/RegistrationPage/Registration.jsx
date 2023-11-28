@@ -12,6 +12,8 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
      const { user, createUser, updateUserProfile } = useContext(AuthContext);
+     const [errorMessage, setErrorMessage] = useState(false);
+
      const location = useLocation();
      const navigate = useNavigate();
      const from = location?.state?.from?.pathname || "/";
@@ -28,6 +30,22 @@ const Registration = () => {
                     text: "User Already logged In",
                     icon: "error",
                });
+          }
+          setErrorMessage("");
+
+          if (data.password.length < 6) {
+               setErrorMessage("Please enter at least 6 character password");
+               return;
+          } else if (!/(?=.*[A-Z])/.test(data.password)) {
+               setErrorMessage(
+                    "Password must contain at least one uppercase letter."
+               );
+               return;
+          } else if (!/(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-])/.test(data.password)) {
+               setErrorMessage(
+                    "Password must contain at least one special character."
+               );
+               return;
           }
           console.log(data);
           createUser(data.email, data.password)
@@ -61,7 +79,10 @@ const Registration = () => {
                                    });
                          })
                          .catch((error) => {
-                              console.log(error);
+                              // console.log(error);
+                              setErrorMessage(
+                                   "User login failed..! Invalid email or password"
+                              );
                          });
 
                     // Swal.fire(
@@ -221,6 +242,13 @@ const Registration = () => {
                                    </p>
                               </div>
                          </div>
+                         <h3>
+                                   {errorMessage && (
+                                        <p className="text-red-600 pt-1">
+                                             {errorMessage}
+                                        </p>
+                                   )}
+                              </h3>
                          <div className="form-control mt-6">
                               <input
                                    className="btn bg-[#FF444A] text-white"
