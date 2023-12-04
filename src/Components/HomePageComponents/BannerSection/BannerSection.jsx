@@ -22,7 +22,7 @@ const BannerSection = () => {
                                              creativity knows no bounds. Unleash
                                              your talents, participate in
                                              exciting contests, and let your
-                                             imagination soar.
+                                             imagination soar...
                                         </p>
                                    </p>
                                    <div className="mt-4 md:mt-5 flex justify-center">
