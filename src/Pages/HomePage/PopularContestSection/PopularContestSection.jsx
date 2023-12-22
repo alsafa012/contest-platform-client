@@ -7,11 +7,11 @@ import "swiper/css/pagination";
 import { Link, useLoaderData } from "react-router-dom";
 const PopularContestSection = () => {
      const allContest = useLoaderData();
-     console.log(allContest);
+     // console.log(allContest);
      const shortedParticipated = [...allContest].sort(
           (a, b) => b.participants - a.participants
      );
-     console.log(shortedParticipated);
+     // console.log(shortedParticipated);
 
      return (
           <Container>

@@ -1,4 +1,5 @@
 import Container from "../../../Shared/Container/Container";
+import "../BannerSection/BannerSection.css";
 const BannerSection = () => {
      return (
           <div className="text-center">
@@ -13,10 +14,15 @@ const BannerSection = () => {
                          <div className="hero-overlay bg-opacity-60"></div>
                          <div className="hero-content text-center text-neutral-content">
                               <div className="max-w-md">
-                                   <h1 className="mb-5 text-5xl font-bold">
-                                        Welcome to Contest HUB
+                                   <h1 className="mb-5 text-5xl font-bold ">
+                                        Hello
+                                        <span
+                                             className="styles-module_blinking__9VXRT styles-module_blinkingCursor__yugAC"
+                                             style={{ color: 'inherit' }}
+                                        >
+                                             Welcome to Contest HUB
+                                        </span>
                                    </h1>
-                                   <p className="">
                                         <p>
                                              The ultimate platform where
                                              creativity knows no bounds. Unleash
@@ -24,7 +30,6 @@ const BannerSection = () => {
                                              exciting contests, and let your
                                              imagination soar...
                                         </p>
-                                   </p>
                                    <div className="mt-4 md:mt-5 flex justify-center">
                                         <input
                                              id="inputField"

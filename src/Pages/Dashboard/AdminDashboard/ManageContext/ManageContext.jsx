@@ -26,7 +26,6 @@ const ManageContext = () => {
                confirmButtonText: "Yes, di it!"
              }).then((result) => {
                if (result.isConfirmed) {
-
                     const contextUpdateStatus = { status: "confirmed",finalParticipants };
                     axiosSecure
                          .patch(`/createContext/${id}`, contextUpdateStatus)

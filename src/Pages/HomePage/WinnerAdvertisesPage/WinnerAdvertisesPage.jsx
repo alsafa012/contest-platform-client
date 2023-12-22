@@ -22,7 +22,7 @@ const WinnerAdvertisesPage = () => {
                return res.data;
           },
      });
-     console.log(registerUser);
+     // console.log(registerUser);
 
      return (
           <Container>
