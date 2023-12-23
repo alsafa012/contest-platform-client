@@ -5,7 +5,7 @@ import Login from "../Pages/LoginPage/Login";
 import Registration from "../Pages/RegistrationPage/Registration";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
-import Dashboard from "../Layout/Dashboard";
+// import Dashboard from "../Layout/Dashboard";
 import AllContestPage from "../Pages/AllContestPage/AllContestPage";
 import ManageUser from "../Pages/Dashboard/AdminDashboard/ManageUser/ManageUser";
 import ManageContext from "../Pages/Dashboard/AdminDashboard/ManageContext/ManageContext";
@@ -18,8 +18,9 @@ import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import ContestSubmissionPage from "../Pages/Dashboard/CreatorDashboard/ContestSubmissionPage/ContestSubmissionPage";
 import UserRegisteredContestPage from "../Pages/Dashboard/UserDashboard/UserRegisteredContestPage/UserRegisteredContestPage";
 import UserWinningContestPage from "../Pages/Dashboard/UserDashboard/UserWinningContestPage/UserWinningContestPage";
-import AuthProvider from "../Provider/AuthProvider";
+// import AuthProvider from "../Provider/AuthProvider";
 import ContactUsPage from "../Pages/ContactUsPage/ContactUsPage";
+import DashboardYry from "../Layout/DashboardYry";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -82,7 +83,8 @@ const myCreatedRouter = createBrowserRouter([
           path: "/dashboard",
           element: (
                <PrivateRoute>
-                    <Dashboard></Dashboard>
+                    {/* <Dashboard></Dashboard> */}
+                    <DashboardYry></DashboardYry>
                </PrivateRoute>
           ),
           children: [

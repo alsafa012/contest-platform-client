@@ -1,9 +1,9 @@
-import Container from "../../../Shared/Container/Container";
+// import Container from "../../../Shared/Container/Container";
 import "../BannerSection/BannerSection.css";
 const BannerSection = () => {
      return (
           <div className="text-center">
-               <Container>
+               {/* <Container> */}
                     <div
                          className="hero min-h-screen"
                          style={{
@@ -15,21 +15,19 @@ const BannerSection = () => {
                          <div className="hero-content text-center text-neutral-content">
                               <div className="max-w-md">
                                    <h1 className="mb-5 text-5xl font-bold ">
-                                        Hello
-                                        <span
+                                        Hello Welcome to Contest HUB
+                                        {/* <span
                                              className="styles-module_blinking__9VXRT styles-module_blinkingCursor__yugAC"
                                              style={{ color: 'inherit' }}
-                                        >
-                                             Welcome to Contest HUB
-                                        </span>
+                                        > */}
+                                        {/* </span> */}
                                    </h1>
-                                        <p>
-                                             The ultimate platform where
-                                             creativity knows no bounds. Unleash
-                                             your talents, participate in
-                                             exciting contests, and let your
-                                             imagination soar...
-                                        </p>
+                                   <p>
+                                        The ultimate platform where creativity
+                                        knows no bounds. Unleash your talents,
+                                        participate in exciting contests, and
+                                        let your imagination soar...
+                                   </p>
                                    <div className="mt-4 md:mt-5 flex justify-center">
                                         <input
                                              id="inputField"
@@ -48,7 +46,7 @@ const BannerSection = () => {
                               </div>
                          </div>
                     </div>
-               </Container>
+               {/* </Container> */}
           </div>
      );
 };

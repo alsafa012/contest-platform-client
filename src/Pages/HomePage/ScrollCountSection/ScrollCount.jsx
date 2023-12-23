@@ -7,14 +7,16 @@ const ScrollCount = () => {
      const [scrollTrigger, setScrollTrigger] = useState(false);
      return (
           <div>
-               <Container>
-                    <ScrollTrigger
-                         onEnter={() => setScrollTrigger(true)}
-                         onExit={() => setScrollTrigger(false)}
-                    >
-                         <div className="relative w-full">
-                              <div className=" h-[300px] bg-[url('https://i.ibb.co/cTCW7LV/images-4.jpg')] bg-fixed bg-cover object-fill bg-center"></div>
-                              <div className="absolute top-4 space-y-3 md:space-y-0 md:top-[45%] w-full md:flex md:justify-around text-center md:items-center md:gap-5">
+               <ScrollTrigger
+                    onEnter={() => setScrollTrigger(true)}
+                    onExit={() => setScrollTrigger(false)}
+               >
+                    <div className="relative w-full">
+                         <div className=" h-[300px] bg-[url('https://i.ibb.co/cTCW7LV/images-4.jpg')] bg-fixed bg-cover object-fill bg-center w-full"></div>
+                         {/* <div className="absolute top-4 md:top-[45%]"> */}
+                         <div className="absolute top-[50%] left-[50%] right-[50%] bottom-[50%]">
+                              <Container>
+                              <div className="space-y-3 md:space-y-0 w-full md:flex md:justify-around text-center md:items-center md:gap-16">
                                    <div>
                                         <h2 className="text-3xl md:text-4xl font-bold text-yellow-50">
                                              {scrollTrigger && (
@@ -65,10 +67,11 @@ const ScrollCount = () => {
                                         </p>
                                    </div>
                               </div>
+                              </Container>
                          </div>
-                         {/* </div> */}
-                    </ScrollTrigger>
-               </Container>
+                    </div>
+                    {/* </div> */}
+               </ScrollTrigger>
           </div>
      );
 };

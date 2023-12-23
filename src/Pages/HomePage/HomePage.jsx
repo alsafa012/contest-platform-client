@@ -11,13 +11,13 @@ const HomePage = () => {
           <div>
                <WebsiteTitle title={"Home Page"}></WebsiteTitle>
 
-               <Container>
+               {/* <Container> */}
                     <BannerSection></BannerSection>
                     <PopularContestSection></PopularContestSection>
                     <BestCreator></BestCreator>
                     <WinnerAdvertisesPage></WinnerAdvertisesPage>
                     <ScrollCount></ScrollCount>
-               </Container>
+               {/* </Container> */}
           </div>
      );
 };
