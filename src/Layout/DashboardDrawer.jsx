@@ -2,13 +2,16 @@ import { FaHome, FaSearch } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 // import useAdmin from "../Components/hook/useAdmin";
 // import useCreator from "../Components/hook/useCreator";
+import { IoClose } from "react-icons/io5";
 import { FaListUl } from "react-icons/fa";
 import useAdmin from "../Components/hook/useAdmin";
 import useCreator from "../Components/hook/useCreator";
+import { useState } from "react";
 // {/* <FaListUl /> */}
-const DashboardYry = () => {
+const DashboardDrawer = () => {
      const [isAdmin] = useAdmin();
      const [isCreator] = useCreator();
+     const [toggle, setToggle] = useState(false);
      // const isCreator = true;
      return (
           <div className="container mx-auto">
@@ -22,11 +25,15 @@ const DashboardYry = () => {
                     <div className="drawer-content relative max-h-screen overflow-y-auto">
                          {/* Page content here */}
                          <label
-                              htmlFor="my-drawer-2"
-                              className="btn btn-primary bg-red-400 border-none drawer-button lg:hidden fixed z-10 top-0 right-0 "
-                         >
-                              <FaListUl /> 
-                         </label>
+                                   onClick={() => setToggle(!toggle)}
+                                   htmlFor="my-drawer-2"
+                                   className="btn red drawer-button lg:hidden fixed z-10 top-2 right-2 "
+                              >
+                                   <button>
+
+                                   {toggle ? <IoClose /> : <FaListUl />}
+                                   </button>
+                              </label>
                          {/* <div className="border bg-red-300"> */}
                               <Outlet></Outlet>
                          {/* </div> */}
@@ -100,8 +107,8 @@ const DashboardYry = () => {
                                    </NavLink>
                               </li>
                               <li>
-                                   <NavLink to="/">
-                                        <FaSearch></FaSearch> Menu
+                                   <NavLink to="/allContest">
+                                        <FaSearch></FaSearch> All Contest
                                    </NavLink>
                               </li>
                          </ul>
@@ -111,4 +118,4 @@ const DashboardYry = () => {
      );
 };
 
-export default DashboardYry;
+export default DashboardDrawer;

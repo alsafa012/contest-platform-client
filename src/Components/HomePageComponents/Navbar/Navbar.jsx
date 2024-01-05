@@ -122,10 +122,12 @@ const Navbar = () => {
      );
      return (
           <div>
-               <div className="bg-black">
+               {/* #252734 dark */}
+               {/*  #2a2c39 light */}
+               <div className="bg-[#252734]">
                     {/* <div className="bg-black fixed z-30 top-0 left-0 right-0" > */}
                     <Container>
-                         <div className="navbar bg-black">
+                         <div className="navbar">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                               <div className="navbar-start">
                                    <div className="dropdown">

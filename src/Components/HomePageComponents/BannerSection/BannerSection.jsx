@@ -14,7 +14,7 @@ const BannerSection = () => {
                          <div className="hero-overlay bg-opacity-60"></div>
                          <div className="hero-content text-center text-neutral-content">
                               <div className="max-w-md">
-                                   <h1 className="mb-5 text-5xl font-bold ">
+                                   <h1 className="mb-5 text-2xl md:text-5xl font-bold ">
                                         Hello Welcome to Contest HUB
                                         {/* <span
                                              className="styles-module_blinking__9VXRT styles-module_blinkingCursor__yugAC"

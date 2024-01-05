@@ -20,7 +20,7 @@ import UserRegisteredContestPage from "../Pages/Dashboard/UserDashboard/UserRegi
 import UserWinningContestPage from "../Pages/Dashboard/UserDashboard/UserWinningContestPage/UserWinningContestPage";
 // import AuthProvider from "../Provider/AuthProvider";
 import ContactUsPage from "../Pages/ContactUsPage/ContactUsPage";
-import DashboardYry from "../Layout/DashboardYry";
+import DashboardDrawer from "../Layout/DashboardDrawer";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -84,7 +84,7 @@ const myCreatedRouter = createBrowserRouter([
           element: (
                <PrivateRoute>
                     {/* <Dashboard></Dashboard> */}
-                    <DashboardYry></DashboardYry>
+                    <DashboardDrawer></DashboardDrawer>
                </PrivateRoute>
           ),
           children: [

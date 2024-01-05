@@ -45,7 +45,7 @@ const SocialLogin = () => {
      };
      return (
           <div>
-               <div className="form-control w-[300px] mx-auto text-center">
+               <div className="form-control md:w-[300px] w-full mx-auto text-center">
                     <button
                          onClick={handleGoogleSignIn}
                          type="button"

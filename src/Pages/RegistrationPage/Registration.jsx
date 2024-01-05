@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogins/SocialLogin";
 import useAxiosPublic from "../../Components/hook/useAxiosPublic";
 import moment from "moment/moment";
+import { MdNavigateBefore } from "react-icons/md";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const Registration = () => {
      const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +42,9 @@ const Registration = () => {
                     "Password must contain at least one uppercase letter."
                );
                return;
-          } else if (!/(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-])/.test(data.password)) {
+          } else if (
+               !/(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-])/.test(data.password)
+          ) {
                setErrorMessage(
                     "Password must contain at least one special character."
                );
@@ -60,7 +63,7 @@ const Registration = () => {
                                    CreatedTime: moment().format(
                                         "MMMM Do YYYY, h:mm:ss a"
                                    ),
-                                   role: 'user'
+                                   role: "user",
                               };
                               axiosPublic
                                    .post("/users", userInfo)
@@ -98,176 +101,199 @@ const Registration = () => {
                });
      };
      return (
-          <div>
+          <div className="bg-[#252734]">
                <WebsiteTitle title={"Registration"}></WebsiteTitle>
-               <div>
-                    <div className=" font-bold mt-5 text-center text-[#FF444A]">
-                         
-                    <SectionTitle subHeading={"Sign Up Page"}></SectionTitle>
-                    </div>
+               <div className="py-5">
+                    <div className="relative light-bg border w-4/5 md:w-1/2 lg:w-1/3 mx-auto p-5 rounded-xl font-bold text-center text-white">
+                         <SectionTitle
+                              subHeading={"Sign Up Page"}
+                         ></SectionTitle>
+                         <Link to="/">
+                              <button className="btn red absolute top-0 left-0">
+                                   <MdNavigateBefore />
+                                   Home
+                              </button>
+                         </Link>
 
-                    <form
-                         onSubmit={handleSubmit(onSubmit)}
-                         className="w-4/5 md:w-1/2 mx-auto"
-                    >
-                         {/* User Name */}
-                         <div className="form-control">
-                              <label className="label">
-                                   <span className="label-text">Name</span>
-                              </label>
-                              <input
-                                   {...register("name", { required: true })}
-                                   type="text"
-                                   name="name"
-                                   placeholder="Name"
-                                   className="input input-bordered"
-                                   // required
-                              />
-                              {errors.name && (
-                                   <span className="mt-2 text-red-500">
-                                        Name must be required
-                                   </span>
-                              )}
-                         </div>
-                         {/* Photo url */}
-                         <div className="form-control">
-                              <label className="label">
-                                   <span className="label-text">Photo</span>
-                              </label>
-                              <input
-                                   {...register("photo", { required: true })}
-                                   type="text"
-                                   name="photo"
-                                   placeholder="photo url"
-                                   className="input input-bordered"
-                                   // required
-                              />
-                              {errors.photo && (
-                                   <span className="mt-2 text-red-500">
-                                        Photo is required
-                                   </span>
-                              )}
-                         </div>
-                         {/* Email */}
-                         <div className="form-control">
-                              <label className="label">
-                                   <span className="label-text">Email</span>
-                              </label>
-                              <input
-                                   {...register("email", { required: true })}
-                                   type="text"
-                                   name="email"
-                                   placeholder="Email"
-                                   className="input input-bordered"
-                                   // required
-                              />
-                              {errors.email && (
-                                   <span className="mt-2 text-red-500">
-                                        Email field is required
-                                   </span>
-                              )}
-                         </div>
-                         {/* Password */}
-                         <div className="form-control relative">
-                              <label className="label">
-                                   <span className="label-text">Password</span>
-                              </label>
-                              <input
-                                   {...register("password", {
-                                        required: true,
-                                        maxLength: 20,
-                                        minLength: 6,
-                                   })}
-                                   type={showPassword ? "text" : "password"}
-                                   name="password"
-                                   placeholder="Password"
-                                   className="input input-bordered"
-                                   // required
-                              />
-                              {errors.password?.type === "required" && (
-                                   <p
-                                        className="mt-2 text-red-500"
-                                        role="alert"
-                                   >
-                                        password is required
-                                   </p>
-                              )}
-                              {errors.password?.type === "maxLength" && (
-                                   <p
-                                        className="mt-2 text-red-500"
-                                        role="alert"
-                                   >
-                                        password maxLength is up to 20
-                                   </p>
-                              )}
-                              {errors.password?.type === "minLength" && (
-                                   <p
-                                        className="mt-2 text-red-500"
-                                        role="alert"
-                                   >
-                                        password minLength is 6
-                                   </p>
-                              )}
-                              {/* {errors.password?.type === "required" && (<p className="mt-2 text-red-500" role="alert">password is required</p>)} */}
-
-                              <span
-                                   className="text-xl absolute top-[60%] right-4"
-                                   onClick={() =>
-                                        setShowPassword(!showPassword)
-                                   }
-                              >
-                                   {showPassword ? (
-                                        <FiEye> </FiEye>
-                                   ) : (
-                                        <FiEyeOff></FiEyeOff>
-                                   )}
-                              </span>
-                         </div>
-                         <div className="form-control">
-                              <div className="flex items-center gap-2 mt-2">
+                         <form
+                              onSubmit={handleSubmit(onSubmit)}
+                              className="mx-auto"
+                         >
+                              {/* User Name */}
+                              <div className="form-control text-black">
+                                   <label className="label">
+                                        <span className="text-white">Name</span>
+                                   </label>
                                    <input
-                                        type="checkbox"
-                                        name="terms"
-                                        id=""
-                                        required
+                                        {...register("name", {
+                                             required: true,
+                                        })}
+                                        type="text"
+                                        name="name"
+                                        placeholder="Name"
+                                        className="input input-bordered"
+                                        // required
                                    />
-                                   <p>
-                                        Please accept our
-                                        <a
-                                             className="hover:underline hover:text-red-500"
-                                             href="#"
-                                        >
-                                             terms and conditions
-                                        </a>
-                                   </p>
+                                   {errors.name && (
+                                        <span className="mt-2 text-red-500">
+                                             Name must be required
+                                        </span>
+                                   )}
                               </div>
-                         </div>
-                         <h3>
+                              {/* Photo url */}
+                              <div className="form-control text-black">
+                                   <label className="label">
+                                        <span className="text-white">
+                                             Photo
+                                        </span>
+                                   </label>
+                                   <input
+                                        {...register("photo", {
+                                             required: true,
+                                        })}
+                                        type="text"
+                                        name="photo"
+                                        placeholder="photo url"
+                                        className="input input-bordered"
+                                        // required
+                                   />
+                                   {errors.photo && (
+                                        <span className="mt-2 text-red-500">
+                                             Photo is required
+                                        </span>
+                                   )}
+                              </div>
+                              {/* Email */}
+                              <div className="form-control text-black">
+                                   <label className="label">
+                                        <span className="text-white">
+                                             Email
+                                        </span>
+                                   </label>
+                                   <input
+                                        {...register("email", {
+                                             required: true,
+                                        })}
+                                        type="text"
+                                        name="email"
+                                        placeholder="Email"
+                                        className="input input-bordered"
+                                        // required
+                                   />
+                                   {errors.email && (
+                                        <span className="mt-2 text-red-500">
+                                             Email field is required
+                                        </span>
+                                   )}
+                              </div>
+                              {/* Password */}
+                              <div className="form-control text-black relative">
+                                   <label className="label">
+                                        <span className="text-white">
+                                             Password
+                                        </span>
+                                   </label>
+                                   <input
+                                        {...register("password", {
+                                             required: true,
+                                             maxLength: 20,
+                                             minLength: 6,
+                                        })}
+                                        type={
+                                             showPassword ? "text" : "password"
+                                        }
+                                        name="password"
+                                        placeholder="Password"
+                                        className="input input-bordered"
+                                        // required
+                                   />
+                                   {errors.password?.type === "required" && (
+                                        <p
+                                             className="mt-2 text-red-500"
+                                             role="alert"
+                                        >
+                                             password is required
+                                        </p>
+                                   )}
+                                   {errors.password?.type === "maxLength" && (
+                                        <p
+                                             className="mt-2 text-red-500"
+                                             role="alert"
+                                        >
+                                             password maxLength is up to 20
+                                        </p>
+                                   )}
+                                   {errors.password?.type === "minLength" && (
+                                        <p
+                                             className="mt-2 text-red-500"
+                                             role="alert"
+                                        >
+                                             password minLength is 6
+                                        </p>
+                                   )}
+                                   {/* {errors.password?.type === "required" && (<p className="mt-2 text-red-500" role="alert">password is required</p>)} */}
+
+                                   <span
+                                        className="text-xl absolute top-[60%] right-4"
+                                        onClick={() =>
+                                             setShowPassword(!showPassword)
+                                        }
+                                   >
+                                        {showPassword ? (
+                                             <FiEye> </FiEye>
+                                        ) : (
+                                             <FiEyeOff></FiEyeOff>
+                                        )}
+                                   </span>
+                              </div>
+                              <div className="form-control text-black">
+                                   <div className="flex items-center justify-start gap-2 mt-2">
+                                        <input
+                                             type="checkbox"
+                                             name="terms"
+                                             id=""
+                                             required
+                                        />
+                                        <p className="text-white">
+                                             Please accept our
+                                             <a
+                                                  className="hover:underline hover:text-red-500"
+                                                  href="#"
+                                             >
+                                                  terms and conditions
+                                             </a>
+                                        </p>
+                                   </div>
+                              </div>
+                              <h3>
                                    {errorMessage && (
                                         <p className="text-red-600 pt-1">
                                              {errorMessage}
                                         </p>
                                    )}
                               </h3>
-                         <div className="form-control mt-6">
-                              <input
-                                   className="btn bg-[#FF444A] text-white"
-                                   type="submit"
-                                   value=" Sign Up"
-                              />
+                              <div className="form-control text-black mt-6">
+                                   <input
+                                        className="btn bg-[#FF444A] text-white"
+                                        type="submit"
+                                        value=" Sign Up"
+                                   />
+                              </div>
+                         </form>
+                         <div className="divider w-4/5 mx-auto divider-accent">
+                              OR
                          </div>
-                    </form>
-                    <div className="divider w-4/5 md:w-1/2 mx-auto">OR</div>
-                    <SocialLogin></SocialLogin>
-                    <p className="text-center py-4">
-                         Already Have An Account ?
-                         <Link
-                              className="text-red-500 font-bold hover:underline ml-1"
-                              to="/login"
-                         >
-                              Login
-                         </Link>
-                    </p>
+                         <SocialLogin></SocialLogin>
+                         <p className="text-center py-4">
+                              Already Have An Account ?
+                              <Link
+                                   className="text-red-500 font-bold hover:underline ml-1"
+                                   to="/login"
+                              >
+                                   Login
+                              </Link>
+                         </p>
+                    </div>
                </div>
           </div>
      );

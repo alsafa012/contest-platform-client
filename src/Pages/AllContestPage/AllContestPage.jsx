@@ -16,7 +16,7 @@ const AllContestPage = () => {
      return (
           <Container>
                <WebsiteTitle title={"All Contest Page"}></WebsiteTitle>
-               <div className="min-h-screen">
+               <div className="min-h-screen m mb-5 md:mb-10">
                     <div className="mt-8 mb-5">
                          <SectionTitle
                               subHeading={"All Contests"}
