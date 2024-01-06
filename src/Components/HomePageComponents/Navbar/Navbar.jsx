@@ -4,9 +4,12 @@ import useAuth from "../../hook/useAuth";
 import Swal from "sweetalert2";
 import useAdmin from "../../hook/useAdmin";
 import useCreator from "../../hook/useCreator";
-
+import { useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { FaListUl } from "react-icons/fa";
 const Navbar = () => {
      const { user, userSignOut } = useAuth();
+     const [toggle, setToggle] = useState(false);
      // const [isAdmin] = useAdmin();
      // const [isCreator]=useCreator();
      const [isAdmin] = useAdmin();
@@ -130,14 +133,35 @@ const Navbar = () => {
                          <div className="navbar">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                               <div className="navbar-start">
-                                   <div className="dropdown">
+                                   <details className="dropdown">
+                                        <summary className="flex justify-center items-center">
+                                             <label
+                                                  onClick={() =>
+                                                       setToggle(!toggle)
+                                                  }
+                                                  className="btn bg-[#2a2c39] text-white"
+                                             >
+                                                  <button>
+                                                       {toggle ? (
+                                                            <IoClose />
+                                                       ) : (
+                                                            <FaListUl />
+                                                       )}
+                                                  </button>
+                                             </label>
+                                        </summary>
+                                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                             {navLists}
+                                        </ul>
+                                   </details>
+                                   {/* <div className="dropdown">
                                         <label
                                              tabIndex={0}
                                              className="btn btn-ghost lg:hidden"
                                         >
                                              <svg
                                                   xmlns="http://www.w3.org/2000/svg"
-                                                  className="h-5 w-5"
+                                                  className="h-5 w-5 text-white"
                                                   fill="none"
                                                   viewBox="0 0 24 24"
                                                   stroke="currentColor"
@@ -156,11 +180,11 @@ const Navbar = () => {
                                         >
                                              {navLists}
                                         </ul>
-                                   </div>
+                                   </div> */}
                                    <img
                                         className="rounded-full h-[50px] w-[50px]"
                                         src="https://i.ibb.co/NWVnrNn/png-transparent-computer-icons-translation-context-word-intellectual-miscellaneous-company-text-thum.png"
-                                        alt=""
+                                        alt="logo"
                                    />
 
                                    <p className="btn btn-ghost text-xl md:text-2xl text-white font-extrabold italic">
