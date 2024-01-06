@@ -87,7 +87,7 @@ const WinnerAdvertisesPage = () => {
                     ))}
                </Swiper>
                <SectionTitle subHeading={"Contest Winners"}></SectionTitle>
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-8">
+               <div className="px-2 lg:px-0 grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-8">
                     {registerUser.map(
                          (data) =>
                               data.status === "winner" && (
