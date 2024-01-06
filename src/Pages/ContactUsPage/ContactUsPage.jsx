@@ -2,7 +2,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { PiPhoneDuotone } from "react-icons/pi";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { GoIssueReopened } from "react-icons/go";
-import Footer from "../../Shared/Footer/Footer";
+// import Footer from "../../Shared/Footer/Footer";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 const ContactUsPage = () => {
      return (
@@ -82,7 +82,7 @@ const ContactUsPage = () => {
                               </div>
                          </div>
                     </div>
-                    <Footer></Footer>
+                    {/* <Footer></Footer> */}
                </div>
           </div>
      );
