@@ -133,7 +133,7 @@ const Navbar = () => {
                          <div className="navbar">
                               {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                               <div className="navbar-start">
-                                   <details className="dropdown">
+                                   <details className="dropdown mr-5 lg:hidden">
                                         <summary className="flex justify-center items-center">
                                              <label
                                                   onClick={() =>
@@ -182,7 +182,7 @@ const Navbar = () => {
                                         </ul>
                                    </div> */}
                                    <img
-                                        className="rounded-full h-[50px] w-[50px]"
+                                        className="rounded-full w-10 h-10 md:h-[50px] md:w-[50px]"
                                         src="https://i.ibb.co/NWVnrNn/png-transparent-computer-icons-translation-context-word-intellectual-miscellaneous-company-text-thum.png"
                                         alt="logo"
                                    />
