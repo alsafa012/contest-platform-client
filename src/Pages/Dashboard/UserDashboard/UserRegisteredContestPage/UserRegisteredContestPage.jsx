@@ -5,7 +5,8 @@ import Container from "../../../../Shared/Container/Container";
 import WebsiteTitle from "../../../../Components/WebsiteTitle/WebsiteTitle";
 import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 import ShowRegisteredContests from "./ShowRegisteredContests";
-
+import { Link } from "react-router-dom";
+import { GiClick } from "react-icons/gi";
 const UserRegisteredContestPage = () => {
      const { user } = useAuth();
      const axiosSecure = useAxiosSecure();
@@ -33,6 +34,20 @@ const UserRegisteredContestPage = () => {
                          subHeading={"My Registered Contest"}
                     ></SectionTitle>
                     <div>
+                         {
+                                allContest.length === 0 ?   <div className="">
+                                <p className="text-3xl text-red-400 font-bold text-center">
+                                     You have not participate any contest yet..!
+                                </p>
+                                <Link to="/allContest">
+                                     <button className="btn red flex justify-center mx-auto my-5">
+                                          click here for participate{" "}
+                                          <span className="text-2xl">
+                                               <GiClick />
+                                          </span>
+                                     </button>
+                                </Link>
+                           </div>:
                          <div className="overflow-x-auto text-black">
                               <table className="table">
                                    {/* head */}
@@ -58,6 +73,7 @@ const UserRegisteredContestPage = () => {
                                    </tbody>
                               </table>
                          </div>
+                         }
                     </div>
                </Container>
           </div>

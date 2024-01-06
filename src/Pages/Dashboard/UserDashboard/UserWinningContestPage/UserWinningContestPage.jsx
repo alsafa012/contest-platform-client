@@ -5,6 +5,8 @@ import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../Components/hook/useAxiosSecure";
 import useAuth from "../../../../Components/hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { GiClick } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const UserWinningContestPage = () => {
      const { user } = useAuth();
@@ -38,8 +40,18 @@ const UserWinningContestPage = () => {
                          ></SectionTitle>
                     </div>
                     {contestWinner.length === 0 ? (
-                         <div>
-                              <p className="text-3xl text-red-400 font-bold text-center">You hame not participate any contest yet..!</p>
+                         <div className="">
+                              <p className="text-3xl text-red-400 font-bold text-center">
+                                   You  any contest yet..!
+                              </p>
+                              <Link to="/allContest">
+                                   <button className="btn red flex justify-center mx-auto my-5">
+                                        click here for participate{" "}
+                                        <span className="text-2xl">
+                                             <GiClick />
+                                        </span>
+                                   </button>
+                              </Link>
                          </div>
                     ) : (
                          <div>
