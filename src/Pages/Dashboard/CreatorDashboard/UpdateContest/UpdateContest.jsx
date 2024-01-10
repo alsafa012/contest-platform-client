@@ -57,14 +57,14 @@ const UpdateContest = () => {
           console.log(res.data);
      };
      return (
-          <div className="bg-pink-300">
+          <div className="">
                <Container>
                     <WebsiteTitle
                          title={"Creator || Update Context"}
                     ></WebsiteTitle>
                     <SectionTitle subHeading={"Update Context"}></SectionTitle>
                     {/* <p>{data._id}</p> */}
-                    <div className="p-2">
+                    <div className="p-5 my-5 rounded-lg w-[95%] mx-auto shadow-lg">
                          <form onSubmit={handleSubmit(onSubmit)}>
                               <div className="space-y-3 font-medium">
                                    <div className="grid md:grid-cols-2 md:gap-5">

@@ -67,7 +67,7 @@ const AddContextPage = () => {
                           {/* context name */}
                           <div className="form-control w-full">
                               <label className="label">
-                                   <span className="label-text">
+                                   <span className="text-white">
                                    Contest Name*
                                    </span>
                               </label>
@@ -75,13 +75,13 @@ const AddContextPage = () => {
                                    {...register("name", { required: true })}
                                    type="text"
                                    placeholder="Context Name"
-                                   className="input input-bordered w-full"
+                                   className="input input-bordered w-full text-black"
                               />
                          </div>                         
                               {/*Context tags */}
                               <div className="form-control w-full">
                                    <label className="label">
-                                        <span className="label-text">
+                                        <span className="text-white">
                                         Contest Type/Tags*
                                         </span>
                                    </label>
@@ -90,7 +90,7 @@ const AddContextPage = () => {
                                         {...register("tag", {
                                              required: true,
                                         })}
-                                        className="select select-bordered w-full"
+                                        className="select select-bordered w-full text-black"
                                    >
                                         <option value="business">Business</option>
                                         <option value="medical">Medical</option>
@@ -101,7 +101,7 @@ const AddContextPage = () => {
                                {/*context price */}
                                <div className="form-control w-full">
                                    <label className="label">
-                                        <span className="label-text">
+                                        <span className="text-white">
                                         Contest Entry Fee*
                                         </span>
                                    </label>
@@ -111,13 +111,13 @@ const AddContextPage = () => {
                                         })}
                                         type="text"
                                         placeholder="Price"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full text-black"
                                    />
                               </div>
                                {/*context Prize Money */}
                                <div className="form-control w-full">
                                    <label className="label">
-                                        <span className="label-text">
+                                        <span className="text-white">
                                         price Money*
                                         </span>
                                    </label>
@@ -127,14 +127,14 @@ const AddContextPage = () => {
                                         })}
                                         type="text"
                                         placeholder="Prize Money"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full text-black"
                                    />
                               </div>
                       
                          {/* Contest deadLine */}
                          <div className="form-control w-full">
                                    <label className="label">
-                                        <span className="label-text">
+                                        <span className="text-white">
                                         Contest deadLine*
                                         </span>
                                    </label>
@@ -144,19 +144,19 @@ const AddContextPage = () => {
                                         })}
                                         type="date"
                                         placeholder="Price Money"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full text-black"
                                    />
                               </div>
                          {/* Contest Description*/}
                          <div className="form-control w-full">
                               <label className="label">
-                                   <span className="label-text">
+                                   <span className="text-white">
                                         Contest Description*
                                    </span>
                               </label>
                               <textarea
                                    {...register("description", { required: true })}
-                                   className="textarea textarea-bordered"
+                                   className="textarea textarea-bordered text-black"
                                    placeholder="Description"
                               ></textarea>
                          </div>
@@ -164,13 +164,13 @@ const AddContextPage = () => {
                            {/* Task Submission text instruction*/}
                            <div className="form-control w-full">
                               <label className="label">
-                                   <span className="label-text">
+                                   <span className="text-white">
                                    Task Submission instruction*
                                    </span>
                               </label>
                               <textarea
                                    {...register("instruction", { required: true })}
-                                   className="textarea textarea-bordered"
+                                   className="textarea textarea-bordered text-black"
                                    placeholder="Task Submission instruction"
                               ></textarea>
                          </div>

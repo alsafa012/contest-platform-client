@@ -8,18 +8,24 @@ const ShowRegisteredContests = ({ info, refetch, index }) => {
      const timeOver = new Date(deadLine) < new Date();
      const handleSubmit = (id) => {
           console.log(id);
-          const updateTask = {task: 'Submitted'}
-          axiosSecure.put(`/registerUser/${id}`, updateTask)
-          .then(res=>{
-               if(res.data.modifiedCount>0){
+          const updateTask = { task: "Submitted" };
+          axiosSecure.put(`/registerUser/${id}`, updateTask).then((res) => {
+               if (res.data.modifiedCount > 0) {
                     Swal.fire({
                          title: "Good job!",
                          text: "You clicked the button!",
-                         icon: "success"
-                       });
-                       refetch();
+                         icon: "success",
+                    });
+                    refetch();
                }
-          })
+          });
+     };
+     const handleTimeOver = () => {
+          Swal.fire({
+               icon: "error",
+               title: "Time Over",
+               text: "Cannot Submit",
+          });
      };
      return (
           <tr className="hover">
@@ -27,7 +33,7 @@ const ShowRegisteredContests = ({ info, refetch, index }) => {
                <td>{contestName}</td>
                <td>
                     {timeOver ? (
-                         <button disabled className="btn">
+                         <button onClick={handleTimeOver} className="btn red">
                               Time Over
                          </button>
                     ) : (
@@ -36,12 +42,20 @@ const ShowRegisteredContests = ({ info, refetch, index }) => {
                               className="btn red"
                          >
                               {/* sub */}
-                              {task=== 'Submitted'? <button disabled className="">Submit done</button> : <button>Submit</button>}
+                              {task === "Submitted" ? (
+                                   <button disabled className="">
+                                        Submit done
+                                   </button>
+                              ) : (
+                                   <button>Submit</button>
+                              )}
                          </button>
                     )}
                </td>
                <td>{deadLine}</td>
-               <td>{status}</td>
+               <td>
+                    <button className="red btn btn-sm">{status}</button>
+               </td>
           </tr>
      );
 };

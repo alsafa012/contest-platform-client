@@ -118,7 +118,7 @@ const ManageUser = () => {
                               <table className="table">
                                    {/* head */}
                                    <thead>
-                                        <tr className="font-medium text-black">
+                                        <tr className="font-medium text-white">
                                              <th></th>
                                              <th>Name</th>
                                              <th>Email</th>
@@ -129,7 +129,7 @@ const ManageUser = () => {
                                    <tbody>
                                         {users.map((user, index) => (
                                              <tr
-                                                  className="hover"
+                                                  className="hover:bg-[#252734]"
                                                   key={user._id}
                                              >
                                                   <th>{index + 1}</th>

@@ -102,11 +102,11 @@ const MyCreatedContextPage = () => {
                <div className="">
                     {/* <h2>{createdContext.length}</h2> */}
 
-                    <div className="overflow-x-auto text-black">
+                    <div className="overflow-x-auto text-white">
                          <table className="table">
                               {/* head */}
                               <thead>
-                                   <tr className="font-medium text-black">
+                                   <tr className="font-medium text-white">
                                         <th></th>
                                         <th>Contest Name</th>
                                         <th>Creator Tag</th>
@@ -116,19 +116,19 @@ const MyCreatedContextPage = () => {
                               </thead>
                               <tbody>
                                    {createdContext.map((info, index) => (
-                                        <tr className="hover" key={info._id}>
+                                        <tr className="hover:bg-[#252734]" key={info._id}>
                                              <th>{index + 1}</th>
                                              <td>{info?.name}</td>
                                              <td>{info?.tag}</td>
                                              <td>
                                                   {info.status ===
                                                   "confirmed" ? (
-                                                       <button
-                                                            className="red btn btn-sm"
-                                                            disabled
+                                                       <p
+                                                            className="text-green-500 font-bold"
+                                                            
                                                        >
                                                             Confirmed by Admin
-                                                       </button>
+                                                       </p>
                                                   ) : (
                                                        <Link state={location?.pathname} to={`/updateContest/${info._id}`}>
                                                             <button
@@ -147,12 +147,12 @@ const MyCreatedContextPage = () => {
                                              <th>
                                                   {info.status ===
                                                   "confirmed" ? (
-                                                       <button
-                                                            className="red btn btn-sm"
-                                                            disabled
+                                                       <p
+                                                            className="text-green-500 font-bold"
+                                                            
                                                        >
                                                             Confirmed by Admin
-                                                       </button>
+                                                       </p>
                                                   ) : (
                                                        <button
                                                             onClick={() =>

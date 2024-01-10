@@ -128,7 +128,7 @@ const UserProfile = () => {
                          <SectionTitle subHeading={"My Profile"}></SectionTitle>
                     </div>
 
-                    <div className="w-full mt-10">
+                    <div className="w-full mt-10 text-white">
                          {users.map(
                               (email) =>
                                    email?.email === user?.email && (
@@ -145,7 +145,7 @@ const UserProfile = () => {
                                                             alt=""
                                                        />
                                                   </div>
-                                                  <div className="md:flex gap-2 items-center text-lg font-medium mt-2 mb-3 ">
+                                                  <div className="text-black md:flex gap-2 items-center text-lg font-medium mt-2 mb-3 ">
                                                        <p className="border p-3 bg-white my-3 md:my-0 text-base rounded-xl md:w-1/2">
                                                             Email: {user?.email}
                                                             {/* Email: {email.name} */}

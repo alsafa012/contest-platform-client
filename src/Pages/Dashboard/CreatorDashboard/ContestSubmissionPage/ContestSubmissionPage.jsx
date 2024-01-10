@@ -80,7 +80,7 @@ const ContestSubmissionPage = () => {
                               <table className="table">
                                    
                                    <thead>
-                                        <tr className="font-medium text-black">
+                                        <tr className="font-medium text-white">
                                              {/* <th></th> */}
                                              <th>Contest Name</th>
                                              <th>Participator MAne</th>
@@ -95,7 +95,7 @@ const ContestSubmissionPage = () => {
                                                   info?.creatorEmail ===
                                                        user?.email && (
                                                        <tr
-                                                            className="hover"
+                                                            className="hover:bg-[#252734]"
                                                             key={info._id}
                                                        >
                                                             {/* <th>{index + 1}</th> */}
@@ -116,7 +116,7 @@ const ContestSubmissionPage = () => {
                                                             <td>
                                                                  {info.status ===
                                                                  "winner" ? (
-                                                                      <button className="btn bg-green-300 text-black border-none">
+                                                                      <button className="btn bg-green-300 text-white border-none">
                                                                            Winner
                                                                       </button>
                                                                  ) : (

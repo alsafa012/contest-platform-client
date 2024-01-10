@@ -12,5 +12,11 @@ body {
      border: none;
      color: white;
 }
+.dark-bg {
+     background-color: #252734;
+}
+.light-bg {
+     background-color: #2a2c39;
+}
 /* color: rgba(255, 255, 255, 0.87);
 background-color: #242424; */

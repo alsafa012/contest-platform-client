@@ -23,7 +23,7 @@ const ManageContext = () => {
                showCancelButton: true,
                confirmButtonColor: "#3085d6",
                cancelButtonColor: "#d33",
-               confirmButtonText: "Yes, di it!"
+               confirmButtonText: "Yes, do it!"
              }).then((result) => {
                if (result.isConfirmed) {
                     const contextUpdateStatus = { status: "confirmed",finalParticipants };
@@ -75,11 +75,11 @@ const ManageContext = () => {
 
                <SectionTitle subHeading={`Total Contest: ${contexts.length}`}></SectionTitle>
                <div>
-                    <div className="overflow-x-auto text-black">
+                    <div className="overflow-x-auto text-white">
                          <table className="table">
                               {/* head */}
                               <thead>
-                                   <tr className="font-medium text-black">
+                                   <tr className="font-medium text-white">
                                         <th></th>
                                         <th>Context Name</th>
                                         <th>Creator Email</th>
@@ -89,13 +89,13 @@ const ManageContext = () => {
                               </thead>
                               <tbody>
                                    {contexts.map((info, index) => (
-                                        <tr className="hover" key={info._id}>
+                                        <tr className="hover:bg-[#252734]" key={info._id}>
                                              <th>{index + 1}</th>
                                              <td>{info?.name}</td>
                                              <td>{info?.email}</td>
                                              <td>
                                                   {info.status === "confirmed" ? (
-                                                       <button className="red btn btn-sm" disabled>
+                                                       <button className=" btn btn-sm text-white dark-bg border-none hover:bg-[#252734]">
                                                             Confirmed
                                                        </button>
                                                   ) : (

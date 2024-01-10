@@ -41,18 +41,18 @@ const UserRegisteredContestPage = () => {
                                 </p>
                                 <Link to="/allContest">
                                      <button className="btn red flex justify-center mx-auto my-5">
-                                          click here for participate{" "}
+                                          click here for participate
                                           <span className="text-2xl">
                                                <GiClick />
                                           </span>
                                      </button>
                                 </Link>
                            </div>:
-                         <div className="overflow-x-auto text-black">
+                         <div className="overflow-x-auto text-white">
                               <table className="table">
                                    {/* head */}
                                    <thead>
-                                        <tr className="font-medium text-black">
+                                        <tr className="font-medium text-white">
                                              <th></th>
                                              <th>Context Name</th>
                                              <th>Submission Task</th>
