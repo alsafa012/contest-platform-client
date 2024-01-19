@@ -137,24 +137,21 @@ const UserProfile = () => {
                                              <p>{email.email}</p>
                                              <p>{email.role}</p> */}
                                              {/* <p>{email._id}</p> */}
-                                             <div className="md:w-[65%] mx-auto border p-5 bg-gray-600 rounded-lg">
+                                             <div className="md:w-[65%] max-w-sm mx-auto border p-5 bg-slate-400 rounded-lg">
                                                   <div className="w-full flex justify-center my-3">
                                                        <img
                                                             className="rounded-full w-[80px] border-gray-500 "
                                                             src={user?.photoURL}
-                                                            alt=""
+                                                            alt="user photo"
                                                        />
                                                   </div>
-                                                  <div className="text-black md:flex gap-2 items-center text-lg font-medium mt-2 mb-3 ">
-                                                       <p className="border p-3 bg-white my-3 md:my-0 text-base rounded-xl md:w-1/2">
-                                                            Email: {user?.email}
-                                                            {/* Email: {email.name} */}
-                                                       </p>
-
-                                                       <p className="border p-3 bg-white text-base rounded-xl md:w-1/2">
-                                                            {/* {user?.displayName} */}
-                                                            Name: {email.name}
-                                                       </p>
+                                                  <div className="text-black text-center text-lg font-medium mb-2">
+                                                       <h5 className="text-xl font-medium text-gray-900">
+                                                            {email.name}
+                                                       </h5>
+                                                       <span className="text-sm text-gray-500">
+                                                            {user?.email}
+                                                       </span>
                                                   </div>
                                                   <div className="flex gap-2 justify-center">
                                                        {/* 1st modal */}
@@ -258,11 +255,9 @@ const UserProfile = () => {
                                    )
                          )}
                     </div>
-                         <div className="mt-5">
-                              <SectionTitle
-                                   subHeading={"My Success"}
-                              ></SectionTitle>
-                         </div>
+                    <div className="mt-5">
+                         <SectionTitle subHeading={"My Success"}></SectionTitle>
+                    </div>
                     <div className="flex justify-center -mt-5">
                          <PieChart width={400} height={400}>
                               <Pie

@@ -1,5 +1,5 @@
 import { FaHome, FaSearch } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 // import useAdmin from "../Components/hook/useAdmin";
 // import useCreator from "../Components/hook/useCreator";
 import { IoClose } from "react-icons/io5";
@@ -7,12 +7,54 @@ import { FaListUl } from "react-icons/fa";
 import useAdmin from "../Components/hook/useAdmin";
 import useCreator from "../Components/hook/useCreator";
 import { useState } from "react";
+import { CgLogOut } from "react-icons/cg";
+import useAuth from "../Components/hook/useAuth";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../Components/hook/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 // {/* <FaListUl /> */}
 const DashboardDrawer = () => {
      const [isAdmin] = useAdmin();
      const [isCreator] = useCreator();
+     const { user, userSignOut } = useAuth();
+     const navigate = useNavigate();
      const [toggle, setToggle] = useState(false);
      // const isCreator = true;
+
+     // const axiosPublic = useAxiosPublic();
+     // const { refetch, data: users = [] } = useQuery({
+     //      queryKey: ["users"],
+     //      queryFn: async () => {
+     //           const res = await axiosPublic.get("/users");
+     //           return res.data;
+     //      },
+     // });
+     // const
+
+     const handleUserSignOut = () => {
+          Swal.fire({
+               title: "Are you sure?",
+               text: "You want to sign out?",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes",
+          }).then((result) => {
+               if (result.isConfirmed) {
+                    userSignOut()
+                         .then(() => {
+                              Swal.fire(
+                                   "Good job!",
+                                   "User Sign out successfully",
+                                   "success"
+                              );
+                              navigate("/");
+                         })
+                         .catch();
+               }
+          });
+     };
      return (
           <div className="light-bg">
                <div className="container mx-auto text-white">
@@ -44,9 +86,28 @@ const DashboardDrawer = () => {
                                    aria-label="close sidebar"
                                    className="drawer-overlay"
                               ></label>
-                              <ul className="menu p-4 w-80 min-h-full bg-base-200  dark-bg text-white">
+                              <ul className="menu p-4 w-80 min-h-full bg-base-200  dark-bg text-white relative">
                                    {/* Sidebar content here */}
                                    {/* <ul className="menu p-4 space-y-2"> */}
+
+                                   {user && (
+                                        <>
+                                             <div className="w-full my-3">
+                                                  <img
+                                                       className="rounded-full h-[100px] w-[100px] object-fill mx-auto"
+                                                       src={user?.photoURL}
+                                                       alt=""
+                                                  />
+                                                  <p className="font-medium text-center p-2">
+                                                       {(isAdmin && "Admin") ||
+                                                            (isCreator &&
+                                                                 "Creator") ||
+                                                            "User"}
+                                                  </p>
+                                             </div>
+                                        </>
+                                   )}
+
                                    {isAdmin && (
                                         <>
                                              <li>
@@ -111,6 +172,17 @@ const DashboardDrawer = () => {
                                              <FaSearch></FaSearch> All Contest
                                         </NavLink>
                                    </li>
+                                   {/* <li className="absolute bottom-5"> */}
+                                   <div className="h-[80px]">
+                                        <button
+                                             className="absolute bottom-5 left-0 right-0 light-bg flex items-center justify-center gap-2 text-white hover:bg-[#2a2c39] btn w-[95%] mx-auto p-4 border-none"
+                                             onClick={handleUserSignOut}
+                                        >
+                                             <CgLogOut />
+                                             Sign Out
+                                        </button>
+                                   </div>
+                                   {/* </li> */}
                               </ul>
                          </div>
                     </div>

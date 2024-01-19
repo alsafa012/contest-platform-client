@@ -28,7 +28,7 @@ const ShowRegisteredContests = ({ info, refetch, index }) => {
           });
      };
      return (
-          <tr className="hover">
+          <tr className="hover:bg-[#252734]">
                <th>{index + 1}</th>
                <td>{contestName}</td>
                <td>
